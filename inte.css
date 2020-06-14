@@ -1,0 +1,54 @@
+body{
+	background-color: #c7cbd1;
+}
+select option{
+	line-height: 50px;
+}
+/*.ywhat{
+	height: 30px;
+}*/
+#whole{
+	height: 500px;
+	margin-top: 15px;
+
+}
+#container{
+	border-radius: 5px;
+	float: right;
+}
+#left{
+	float: left;
+}
+.hider{
+	display: none;
+}
+#formm{
+	margin-left: 160px;
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+label{
+	margin-left:30px;
+}
+select{
+	width: 90px;
+	outline: none;
+	border-radius: 6px;
+	background-color: white;
+}
+#butt{
+	margin-left: 20px;
+	height: 30px;
+	margin-right:45px;
+	outline: none;
+	border-radius: 6px;
+	background-color: white;
+
+}
+td,th{
+	border-bottom: 1px solid white;
+	padding: 5px 5px 5px 5px;
+}
+table{
+	text-align: center;
+}
