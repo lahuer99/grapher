@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>table to chart</title>
+	
+	
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+  <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
+	<script src = "https://code.highcharts.com/highcharts.js"></script>
+
+
+	      <script src = "https://code.highcharts.com/highcharts-more.js"></script>
+
+<!-- for venn -->
+<script src="https://code.highcharts.com/modules/venn.js"></script>
+
+<!-- for histogram -->
+<script src="https://code.highcharts.com/modules/histogram-bellcurve.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+
+<!-- <script src="https://code.highcharts.com/modules/exporting.js"></script> -->
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<!-- <script src="https://code.highcharts.com/modules/accessibility.js"></script> -->
+
+
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+
+
+<link rel="stylesheet" type="text/css" href="inte.css">
+</head>
+
+
+
+
+
+<body>
+	<!-- <div id="formm">
+		<form>
+			<label for="graphtype">Choose type of graph:
+				<select name="graphtype" class="graphtype">
+					<option value="bar">Bar Chart</option>
+					<option value="column">Column Chart</option>
+					<option value="area">Area</option>
+					<option value="table-only">Table Only</option>
+					<option value="scatter">Scatter Plot</option>
+					<option value="line">Line Chart</option>
+					<option value="pie">Pie Chart</option>
+					<option value="histogram">Histogram</option>
+					<option value="combi">Combo Chart</option>
+					<option value="bubble">Bubble Chart</option>
+					<option value="venn">Venn Diagram</option>
+					
+				</select></label> 
+				<div id="checkk" style="display: inline; margin-left: 20px">
+					<input type="checkbox" >Stacked?</div>
+				<div id="histo" style="display: inline; margin-left: 20px">
+					Choose:
+					<select class="histwhat" multiple>
+						<option value="schval">School Fees</option>
+						<option value="schpop">School Population</option>
+						<option value="male">No of males</option>
+						<option value="female">No of females</option>
+					</select></div>
+
+				<div style="display: inline;" id="axissel">
+				<label id="xsel" for="xlabel"><span id="xval">Choose X-axis:</span>
+					<select name="xlabel" class="xwhat">
+						<option value="school">School</option>
+						<option value="schloc">School Location</option>
+					</select></label>
+
+					<label id="ysel" for="ylabel">Choose Y-axis: 
+						<select name="ylabel" class="ywhat" multiple>
+							<option value="schval">School Fees</option>
+							<option value="schpop">School Population</option>
+							<option value="male">No of males</option>
+							<option value="female">No of females</option>
+						</select></label> 
+				</div>
+
+
+				<label for="pieoptions" id="pieopts">Choose qty:
+					<select name="pieoptions" class="pieopt">
+						<option value="school">Schools</option>
+						<option value="schloc">Schools in Location</option>
+						<option value="mfsch">M:F by schools</option>
+						<option value="mfloc">M:F by location</option>
+					</select>
+				</label>
+
+
+				<label id="pielabel" for="piee">Choose school:
+				<select name="piee" class="pieval">
+					<option value="Ravenna HS">Ravenna HS</option>
+					<option value="Theodore HS">Theodore HS</option>
+					<option value="Hoover HS">Hoover HS</option>
+					<option value="McKinley HS">McKinley HS</option>
+					<option value="Slow-Munroe Falls HS">Slow-Munroe Falls HS</option>
+					<option value="Fast HS">Fast HS</option>
+					<option value="Tsarrs HS">Tsarrs HS</option>
+					<option value="Dutch Flies HS">Dutch Flies HS</option>
+					<option value="Scotts Tots HS">Scotts Tots HS</option>
+					<option value="Niagara HS">Niagara HS</option>
+					<option value="Minimal Falls HS">Minimal Falls HS</option>
+				</select></label>
+
+
+				<label for="piee2" id="pielabel2">Choose locn:
+					<select name="piee2" class="pieval2">
+						<option value="LA">LA</option>
+						<option value="NY">NY</option>
+						<option value="PEN">PEN</option>
+						<option value="WAS">WAS</option>
+						<option value="SCR">SCR</option>
+						<option value="CAN">CAN</option>
+						<option value="NZ">NZ</option>
+
+					</select>
+				</label>
+						<a id="butt" data-toggle="tab" href="#container" class="btn btn-primary btn" role="button">GO</a>
+					</form>
+				</div> -->
+
+
+
+<div class="container" style="margin-top:25px;">
+
+<div id="left" style="width:50%;margin-top: 10px">
+	<!-- <div class="ml-auto"> -->
+
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+  <div>
+ <ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#table">TABLE</a></li>
+  <li><a data-toggle="tab" href="#container">CHART</a></li>
+</ul>
+</div>
+</nav>
+
+
+<div class="tab-content">
+  <div id="table" class="tab-pane fade in active">
+    <table class="table table-striped">
+							<thead>
+								<tr>
+									<th class="school">School</th>
+									<th class="schval">Pupil Fees</th>
+									<th class="schpop">Pupil Population</th>
+									<th class="schloc">School Location</th>
+									<th class="male">Males</th>
+									<th class="female">Females</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="school">Ravenna HS</td>
+									<td class="schval">930</td>
+									<td class="schpop">9030</td>
+									<td class="schloc">LA</td>
+									<td class="male">4515</td>
+									<td class="female">4515</td>
+								</tr>
+								<tr>
+									<td class="school">Theodore HS</td>
+									<td class="schval">1300</td>
+									<td class="schpop">9300</td>
+									<td class="schloc">NY</td>
+									<td class="male">4560</td>
+									<td class="female">4560</td>
+								</tr>
+								<tr>
+									<td class="school">Hoover HS</td>
+									<td class="schval">1700</td>
+									<td class="schpop">7300</td>
+									<td class="schloc">NY</td>
+									<td class="male">4300</td>
+									<td class="female">3000</td>
+								</tr>
+								<tr>
+									<td class="school">McKinley HS</td>
+									<td class="schval">900</td>
+									<td class="schpop">8030</td>
+									<td class="schloc">PEN</td>
+									<td class="male">4000</td>
+									<td class="female">4030</td>
+								</tr>
+								<tr>
+									<td class="school">Slow-Munroe Falls HS</td>
+									<td class="schval">2300</td>
+									<td class="schpop">7070</td>
+									<td class="schloc">LA</td>
+									<td class="male">5000</td>
+									<td class="female">2070</td>
+								</tr>
+								<tr>
+									<td class="school">Fast HS</td>
+									<td class="schval">5050</td>
+									<td class="schpop">550</td>
+									<td class="schloc">WAS</td>
+									<td class="male">200</td>
+									<td class="female">350</td>
+								</tr>
+								<tr>
+									<td class="school">Tsarrs HS</td>
+									<td class="schval">4000</td>
+									<td class="schpop">11300</td>
+									<td class="schloc">WAS</td>
+									<td class="male">6500</td>
+									<td class="female">4800</td>
+								</tr>
+								<tr>
+									<td class="school">Dutch Flies HS</td>
+									<td class="schval">3300</td>
+									<td class="schpop">9560</td>
+									<td class="schloc">NY</td>
+									<td class="male">4500</td>
+									<td class="female">5060</td>
+								</tr>
+								<tr>
+									<td class="school">Scotts Tots HS</td>
+									<td class="schval">600</td>
+									<td class="schpop">19900</td>
+									<td class="schloc">SCR</td>
+									<td class="male">10900</td>
+									<td class="female">9000</td>
+								</tr>
+								<tr>
+									<td class="school">Niagara HS</td>
+									<td class="schval">770</td>
+									<td class="schpop">14000</td>
+									<td class="schloc">CAN</td>
+									<td class="male">7000</td>
+									<td class="female">7000</td>
+								</tr>
+								<tr>
+									<td class="school">Creed Bratton HS</td>
+									<td class="schval">235</td>
+									<td class="schpop">1600</td>
+									<td class="schloc">SCR</td>
+									<td class="male">1000</td>
+									<td class="female">600</td>
+								</tr>
+								<tr>
+									<td class="school">Minimal Falls HS</td>
+									<td class="schval">1440</td>
+									<td class="schpop">8800</td>
+									<td class="schloc">NZ</td>
+									<td class="male">3500</td>
+									<td class="female">5300</td>
+								</tr>
+							</tbody>
+						</table>
+  </div>
+  <div id="container" class="tab-pane fade">
+  </div>
+</div>
+
+</div>
+
+
+
+<div id="right" style="display: inline; width:50%;">
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+<div style="display: inline; float: left; margin-right: 50px;margin-top: 20px;">
+
+<div class="form-group" style="width: 100%;">
+    <!-- <label for="graphtype">Choose type of graph: -->
+        <select name="graphtype" class="form-control"  id="graphtype">
+          <option value="bar">Bar Chart</option>
+          <option value="column">Column Chart</option>
+          <option value="area">Area</option>
+          <option value="table-only">Table Only</option>
+          <option value="scatter">Scatter Plot</option>
+          <option value="line">Line Chart</option>
+          <option value="pie">Pie Chart</option>
+          <option value="histogram">Histogram</option>
+          <option value="combi">Combo Chart</option>
+          <option value="bubble">Bubble Chart</option>
+          <option value="venn">Venn Diagram</option>
+          
+        </select>
+    <!-- </label>  -->
+  </div>
+
+
+
+
+ <!-- <ul class="nav nav-tabs navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Register</a>
+            </li>
+        </ul>
+ -->
+</div>
+</nav>
+
+
+ <form>
+  <!-- <div class="form-group">
+    <label for="graphtype">Choose type of graph:
+        <select name="graphtype" class="js-example-basic-multiple" id="graphtype">
+          <option value="bar">Bar Chart</option>
+          <option value="column">Column Chart</option>
+          <option value="area">Area</option>
+          <option value="table-only">Table Only</option>
+          <option value="scatter">Scatter Plot</option>
+          <option value="line">Line Chart</option>
+          <option value="pie">Pie Chart</option>
+          <option value="histogram">Histogram</option>
+          <option value="combi">Combo Chart</option>
+          <option value="bubble">Bubble Chart</option>
+          <option value="venn">Venn Diagram</option>
+          
+        </select></label> 
+  </div> -->
+
+
+  <!-- <div class="form-group"> -->
+  	<div class="form-group">
+  	<div id="checkk" style="display: inline; margin-left: 20px">
+					<input type="checkbox" >Stacked?</div>
+				</div>
+<div class="form-group">
+				<div id="histo" style="display: inline; margin-left: 20px">
+					Choose:
+					<select class="histwhat" multiple>
+						<option value="schval">School Fees</option>
+						<option value="schpop">School Population</option>
+						<option value="male">No of males</option>
+						<option value="female">No of females</option>
+					</select></div>
+				</div>
+    
+<div style="display: inline;" id="axissel">
+        <div class="form-group">
+        <label id="xsel" for="xlabel"><span id="xval">Choose X-axis:</span>
+          <select name="xlabel" class="form-control" class="js-example-basic-multiple" id="xwhat">
+            <option value="school">School</option>
+            <option value="schloc">School Location</option>
+          </select></label>
+      </div>
+      <div class="form-group">
+          <label id="ysel" for="ylabel">Choose Y-axis: <br>
+            <select name="ylabel"  class="js-example-basic-multiple" id="ywhat" multiple="multiple">
+              <option value="schval">School Fees</option>
+              <option value="schpop">School Population</option>
+              <option value="male">No of males</option>
+              <option value="female">No of females</option>
+            </select></label> 
+        </div>
+
+</div>
+
+
+<div class="form-group">
+        <label for="pieoptions" id="pieopts">Choose qty:
+					<select name="pieoptions" class="form-control" id="pieopt">
+						<option value="school">Schools</option>
+						<option value="schloc">Schools in Location</option>
+						<option value="mfsch">M:F by schools</option>
+						<option value="mfloc">M:F by location</option>
+					</select>
+				</label>
+</div>
+<div class="form-group">
+
+				<label id="pielabel" for="piee">Choose school:
+				<select name="piee" class="form-control" id="pieval">
+					<option value="Ravenna HS">Ravenna HS</option>
+					<option value="Theodore HS">Theodore HS</option>
+					<option value="Hoover HS">Hoover HS</option>
+					<option value="McKinley HS">McKinley HS</option>
+					<option value="Slow-Munroe Falls HS">Slow-Munroe Falls HS</option>
+					<option value="Fast HS">Fast HS</option>
+					<option value="Tsarrs HS">Tsarrs HS</option>
+					<option value="Dutch Flies HS">Dutch Flies HS</option>
+					<option value="Scotts Tots HS">Scotts Tots HS</option>
+					<option value="Niagara HS">Niagara HS</option>
+					<option value="Minimal Falls HS">Minimal Falls HS</option>
+				</select></label>
+</div>
+<div class="form-group">
+
+				<label for="piee2" id="pielabel2">Choose locn:
+					<select name="piee2" class="form-control" id="pieval2">
+						<option value="LA">LA</option>
+						<option value="NY">NY</option>
+						<option value="PEN">PEN</option>
+						<option value="WAS">WAS</option>
+						<option value="SCR">SCR</option>
+						<option value="CAN">CAN</option>
+						<option value="NZ">NZ</option>
+
+					</select>
+				</label>
+			</div>
+
+
+
+
+
+ 
+
+
+  </div>
+
+
+
+  <!-- <div class="form-group">
+    <label for="exampleInputFile">File input</label>
+    <input type="file" id="exampleInputFile">
+    <p class="help-block">Example block-level help text here.</p>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox"> Check me out
+    </label>
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button> -->
+
+              <a id="butt" data-toggle="tab" href="#container" class="btn btn-primary btn" role="button">GO</a>
+
+</form>	
+	
+
+
+
+<!-- <div id="formm">
+		<form>
+			<label for="graphtype">Choose type of graph:
+				<select name="graphtype" class="graphtype">
+					<option value="bar">Bar Chart</option>
+					<option value="column">Column Chart</option>
+					<option value="area">Area</option>
+					<option value="table-only">Table Only</option>
+					<option value="scatter">Scatter Plot</option>
+					<option value="line">Line Chart</option>
+					<option value="pie">Pie Chart</option>
+					<option value="histogram">Histogram</option>
+					<option value="combi">Combo Chart</option>
+					<option value="bubble">Bubble Chart</option>
+					<option value="venn">Venn Diagram</option>
+					
+				</select></label> 
+				<div id="checkk" style="display: inline; margin-left: 20px">
+					<input type="checkbox" >Stacked?</div>
+				<div id="histo" style="display: inline; margin-left: 20px">
+					Choose:
+					<select class="histwhat" multiple>
+						<option value="schval">School Fees</option>
+						<option value="schpop">School Population</option>
+						<option value="male">No of males</option>
+						<option value="female">No of females</option>
+					</select></div>
+
+				<div style="display: inline;" id="axissel">
+				<label id="xsel" for="xlabel"><span id="xval">Choose X-axis:</span>
+					<select name="xlabel" class="xwhat">
+						<option value="school">School</option>
+						<option value="schloc">School Location</option>
+					</select></label>
+
+					<label id="ysel" for="ylabel">Choose Y-axis: 
+						<select name="ylabel" class="ywhat" multiple>
+							<option value="schval">School Fees</option>
+							<option value="schpop">School Population</option>
+							<option value="male">No of males</option>
+							<option value="female">No of females</option>
+						</select></label> 
+				</div>
+
+
+				<label for="pieoptions" id="pieopts">Choose qty:
+					<select name="pieoptions" class="pieopt">
+						<option value="school">Schools</option>
+						<option value="schloc">Schools in Location</option>
+						<option value="mfsch">M:F by schools</option>
+						<option value="mfloc">M:F by location</option>
+					</select>
+				</label>
+
+
+				<label id="pielabel" for="piee">Choose school:
+				<select name="piee" class="pieval">
+					<option value="Ravenna HS">Ravenna HS</option>
+					<option value="Theodore HS">Theodore HS</option>
+					<option value="Hoover HS">Hoover HS</option>
+					<option value="McKinley HS">McKinley HS</option>
+					<option value="Slow-Munroe Falls HS">Slow-Munroe Falls HS</option>
+					<option value="Fast HS">Fast HS</option>
+					<option value="Tsarrs HS">Tsarrs HS</option>
+					<option value="Dutch Flies HS">Dutch Flies HS</option>
+					<option value="Scotts Tots HS">Scotts Tots HS</option>
+					<option value="Niagara HS">Niagara HS</option>
+					<option value="Minimal Falls HS">Minimal Falls HS</option>
+				</select></label>
+
+
+				<label for="piee2" id="pielabel2">Choose locn:
+					<select name="piee2" class="pieval2">
+						<option value="LA">LA</option>
+						<option value="NY">NY</option>
+						<option value="PEN">PEN</option>
+						<option value="WAS">WAS</option>
+						<option value="SCR">SCR</option>
+						<option value="CAN">CAN</option>
+						<option value="NZ">NZ</option>
+
+					</select>
+				</label>
+						<a id="butt" data-toggle="tab" href="#container" class="btn btn-primary btn" role="button">GO</a>
+					</form>
+				</div>
+
+
+
+
+
+
+ -->
+
+
+
+
+
+
+</div>
+
+
+
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+  	 $('.js-example-basic-multiple').select2();
+  	// $('.mdb-select').materialSelect();
+   
+});
+</script>
+<script type="text/javascript" src="inte.js"></script>     
+</body>
+</html>
+
