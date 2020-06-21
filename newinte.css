@@ -1,0 +1,106 @@
+body{
+	background-color: silver;
+}
+select option{
+	line-height: 50px;
+}
+#stackCheck{
+	margin-top: 20px;
+	margin-left: 55px;
+
+}
+
+.select2-container--default .select2-selection--multiple{
+	margin-top: 8px;
+}
+
+#applybutton{
+	margin-left: 30px;
+}
+
+#histwhat{
+	width:435px;
+}
+#graphtype{
+	margin-left: 30px;
+}
+
+#ywhat,#graphtype,#xwhat,#pieopt,#pieval,#pieval2,#ywhat1,#xwhat1,#zwhat{
+	width:89%;
+}
+#ysel,#xsel,#pieOptions,#pielabel,#pielabel2,#graphtypediv,#ysel1,#xsel1,#zsel{
+	margin-right:90px;
+	width:90%;
+}
+
+#container{
+	width: 570px;
+	overflow: auto;
+	border-radius:10px;
+}
+
+#left{
+	float: left;
+}
+
+#right{
+	float: right;
+}
+
+.hider{
+	display: none;
+}
+
+
+label{
+	margin-left:30px;
+}
+select{
+	width: 90px;
+	outline: none;
+	border-radius: 6px;
+	background-color: white;
+}
+#maindiv{
+	display: inline;
+}
+#goButton{
+	margin-left: 30px;
+	height: 30px;
+	margin-right:45px;
+	outline: none;
+	border-radius: 6px;
+	margin-top: 10px;
+	height: 45px;
+	padding-top: 6px;
+	font-size: 25px;
+	width:80%;
+
+}
+
+.container{
+	margin-left: 90px;
+	border-radius: 6px;
+	background-color: #e4e7ed;
+	width: 1150px;
+	height: 610px;
+	 box-shadow: 1px 1px 0px #999,
+                2px 2px 0px #999,
+                3px 3px 0px #999,
+                4px 4px 0px #999,
+                5px 5px 0px #999,
+                6px 6px 0px #999;
+
+}
+/*///////////////////*/
+
+
+
+td,th{
+	padding: 5px 5px 5px 5px;
+}
+table{
+	border:1px solid white;
+	text-align: center;
+	border-radius: 15px;
+}
