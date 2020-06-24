@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>table to chart</title>
+	
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+	<!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
+	<script src = "https://code.highcharts.com/highcharts.js"></script>
+
+
+	<script src = "https://code.highcharts.com/highcharts-more.js"></script>
+
+	<!-- for venn -->
+	<script src="https://code.highcharts.com/modules/venn.js"></script>
+
+	<!-- for histogram -->
+	<script src="https://code.highcharts.com/modules/histogram-bellcurve.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+
+
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+
+	<!-- select2 plugin -->
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+	<!-- custom stylesheet -->
+	<link rel="stylesheet" type="text/css" href="finte.css">
+</head>
+
+
+
+
+
+<body>
+	
+
+
+	<div class="container" style="margin-top:25px;">
+
+		<div id="left" style="width:550px;margin-top: 10px">
+
+			<nav class="navbar navbar-expand-md navbar-light bg-light">
+				<div>
+					<ul id="firstul" class="nav nav-tabs">
+						<li id="fulfli" class="active"><a data-toggle="tab" href="#table">TABLE</a></li>
+						<li id="fulsli"><a data-toggle="tab" href="#graphtypediv">CHART</a></li>
+						<li id="sulsli"><a data-toggle="tab" href="#customize">CUSTOMIZE</a></li>
+					</ul>
+				</div>
+			</nav>
+
+
+		<div class="tab-content">
+				
+				<div id="table" class="tab-pane fade in active" style="padding-left:115px;width:1000px;height:515px;overflow-y: scroll;overflow-x: scroll;">	
+					<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>School</th>
+									<th>Pupil Fees</th>
+									<th>Pupil Population</th>
+									<th>School Location</th>
+									<th>Males</th>
+									<th>Females</th>
+									<th>Clubs</th>
+								</tr>
+							</thead>
+							<tbody>
+									<tr>
+										<td>Ravenna HS</td>
+										<td>930</td>
+										<td>9030</td>
+										<td>LA</td>
+										<td>4515</td>
+										<td>4515</td>
+										<td>Music,Math</td>
+									</tr>
+									<tr>
+										<td>Theodore HS</td>
+										<td>1300</td>
+										<td>9120</td>
+										<td>NY</td>
+										<td>4560</td>
+										<td>4560</td>
+										<td>Music</td>
+									</tr>
+									<tr>
+										<td>Hoover HS</td>
+										<td>1700</td>
+										<td>7300</td>
+										<td>NY</td>
+										<td>4300</td>
+										<td>3000</td>
+										<td>Music,Math</td>
+									</tr>
+									<tr>
+										<td>McKinley HS</td>
+										<td>900</td>
+										<td>8030</td>
+										<td>PEN</td>
+										<td>4000</td>
+										<td>4030</td>
+										<td>Math</td>
+									</tr>
+									<tr>
+										<td>Slow-Munroe Falls HS</td>
+										<td>2300</td>
+										<td>7070</td>
+										<td>LA</td>
+										<td>5000</td>
+										<td>2070</td>
+										<td>Math,Music</td>
+									</tr>
+									<tr>
+										<td>Fast HS</td>
+										<td>5050</td>
+										<td>550</td>
+										<td>WAS</td>
+										<td>200</td>
+										<td>350</td>
+										<td>Music,Math</td>
+									</tr>
+									<tr>
+										<td>Tsarrs HS</td>
+										<td>4000</td>
+										<td>11300</td>
+										<td>WAS</td>
+										<td>6500</td>
+										<td>4800</td>
+										<td>Music</td>
+									</tr>
+									<tr>
+										<td>Dutch Flies HS</td>
+										<td>3300</td>
+										<td>9560</td>
+										<td>NY</td>
+										<td>4500</td>
+										<td>5060</td>
+										<td>Dance</td>
+									</tr>
+									<tr>
+										<td>Scotts Tots HS</td>
+										<td>600</td>
+										<td>19900</td>
+										<td>SCR</td>
+										<td>10900</td>
+										<td>9000</td>
+										<td>Dance,Math</td>
+									</tr>
+									<tr>
+										<td>Niagara HS</td>
+										<td>770</td>
+										<td>14000</td>
+										<td>CAN</td>
+										<td>7000</td>
+										<td>7000</td>
+										<td>Music,Math</td>
+									</tr>
+									<tr>
+										<td>Creed Bratton HS</td>
+										<td>235</td>
+										<td>1600</td>
+										<td>SCR</td>
+										<td>1000</td>
+										<td>600</td>
+										<td>Dance,Music</td>
+									</tr>
+									<tr>
+										<td>Minimal Falls HS</td>
+										<td>1440</td>
+										<td>8800</td>
+										<td>NZ</td>
+										<td>3500</td>
+										<td>5300</td>
+										<td>Dance,Music,Math</td>
+									</tr>
+								</tbody>	
+							</table>
+
+
+				</div>
+						
+<!-- ////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+<div class="tab-pane fade in" class="form-group"  id="graphtypediv" style="width:1000px;">
+
+
+						<div id="container" style="width:600px;float: left;margin-top: 15px;">
+						</div>
+
+<!-- ////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+							<!-- <hr> -->
+	
+						
+							<div id="graphsetsection" style="margin-top: 5px;width:400px;">
+								<h3>SET PARAMETERS</h3>
+							<select style="width:128%" name="graphtype" class="form-control"  id="graphtype">
+
+
+								<option value="" disabled selected>Choose graph</option>
+								<option value="bar">Bar Chart</option>
+								<option value="column">Column Chart</option>
+								<option value="area">Area</option>
+								<option value="table-only">Table Only</option>
+								<option value="scatter">Scatter Plot</option>
+								<option value="line">Line Chart</option>
+								<option value="pie">Pie Chart</option>
+								<option value="histogram">Histogram</option>
+								<option value="combi">Combo Chart</option>
+								<option value="bubble">Bubble Chart</option>
+								<option value="venn">Venn Diagram</option>
+
+
+
+							</select>
+
+
+							<form>
+
+									<div class="form-group">
+										<div id="checkk" class="checkbox">
+											<input type="checkbox" >Stacked?</div>
+									</div>
+
+
+
+									<div class="form-group">
+										<div id="histo" style="width:80%;margin-left: 35px;margin-right: 90px">
+											<b>Choose:</b><br>
+
+
+											<div id="histosect">
+											</div>
+
+
+										</div>
+									</div>
+
+
+
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+
+				<div style="display: inline;" id="axissel">
+											
+
+							<div class="form-group">
+								<label id="xsel" for="xlabel"><span id="xval"><b>Group-By</b>(choose X-axis):</span>
+												
+
+										<div id="xaxisselect">
+										</div>
+
+									
+								</label>
+							</div>
+
+
+												
+							<div class="form-group">
+								<label id="ysel" for="ylabel"><span id="yval"><b>Metrics</b>(choose Y-axis):</span> <br>
+
+											<div id="yaxisselect">
+											</div>
+
+								</label> 
+							</div>
+
+
+							<div class="form-group">
+								<label id="extrasel" for="extralabel"><span id="extraval"><b>Extra Statistics:</b></span> <br>
+
+									<select name="extralabel" style="width:150px;"  class="js-example-basic-multiple" id="extrawhat" multiple="multiple" class="form-control" required>
+											<option value="gmean">G.Mean</option>
+											<option value="gmedian">G.Median</option>
+											<option value="gpercentile">G.Percentile</option>
+											<option value="imean">I.Mean</option>
+											<option value="imedian">I.Median</option>
+											<option value="ipercentile">I.Percentile</option>
+									</select></label> 
+							</div>
+
+
+							<div class="form-group">
+								<label id="percent" for="percentlabel"><span id="percentval"><b>How Manyeth Percentile?</b></span> <br>
+									<input type="text" style="width:75px;" class="form-control" id="percentileval" name="percentlabel">
+
+								</label> 
+							</div>
+
+
+				</div>
+
+
+
+
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+				<div id="piepart">
+
+
+						<div class="form-group">
+							<label id="pieofflabel" for="piee">Choose OF:
+
+								<div id="pieoffs">
+								</div>
+
+														
+						</div>
+
+
+														
+						<div class="form-group" style="margin-left: 50px;">
+								<div id="checkk2" class="checkbox" >
+									<input type="checkbox" id="checkbox2" >More features?</div>
+						</div>
+
+
+
+
+						<div class="form-group">
+							<label for="pieoptions" id="pieaddopts">Choose adders:
+
+								<div id="pieadders">
+								</div>
+
+							</label>
+						</div>
+
+
+
+						<div class="form-group">
+							<label for="piee2" id="piewantedlabel">Choose oFF:
+															
+									<div id="piewanted">
+									</div>
+
+							</label>
+						</div>
+
+
+				</div>
+
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+				<div id="scatbub">
+
+								<div class="form-group">
+									<label id="ysel1" for="ylabel1"><span id="yval1"><b>Metric2</b>(choose Y-axis):</span> <br>
+
+										<div id="scatbubyselect">
+										</div>
+
+									</label> 
+								</div>
+
+
+
+								<div class="form-group">
+									<label id="xsel1" for="xlabel1"><span id="xval1"><b>Metric1</b>(choose X-axis):</span> <br>
+																		
+										<div id="scatbubxselect">		
+										</div>
+
+
+									</label> 
+								</div>
+
+
+
+								<div class="form-group">
+									<label id="zsel" for="zlabel"><span id="zval"><b>Group-By</b>:</span><br>
+
+
+										<div id="scatbubzselect">
+										</div>
+
+									</label>
+								</div>
+
+				</div>
+
+
+
+
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+				<div id="vennpart">
+								<div class="form-group">
+										<label id="venndiff" for="venndifflabel"><span id="venndiffval"><b>Diff-By</b>:</span><br>
+										
+											<div id="venndiffselect">
+											</div>
+										
+										</label>
+								</div>
+
+
+
+							<div id="vennbaseset" style="margin-top: 10px;">
+								<label id="vennbaseset"><b>Basesets(/circles):</b></label><br>
+																		
+										<div id="maindiv">
+										</div>
+							
+							</div>
+
+
+							<div class="form-group">
+								<label id="vennfor" for="vennforlabel"><span id="vennforval"><b>For</b>:</span>	<br>
+
+										<div id="vennforselect">
+										</div>
+
+								</label>									
+							</div>
+
+
+
+				</div>
+
+<!-- //////////////////////////////////////////////////////////////////////////////// -->
+
+
+				<a id="butt" data-toggle="tab" href="#container" class="btn btn-primary btn" role="button">GO</a>
+
+			</form>	
+		</div>
+</div>
+
+
+
+<!-- //////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+					<div id="customize" class="tab-pane fade in" style="margin-top: 20px;">
+							<div class="form-group">
+								<label for="title">Title:
+									<input id="titlename" class="form-control" type="text" name="title">
+								</label>
+							</div>
+							<div class="form-group">
+								<label id="xaxislabel" for="xname">xAxis Name:
+									<input id="xaxisname" class="form-control" type="text" name="xname">
+								</label>
+							</div>
+							<div class="form-group">
+								<label id="yaxislabel" for="yname">yAxis Name:
+									<input id="yaxisname" class="form-control" type="text" name="yname">
+								</label>
+							</div>
+							<div class="form-group">
+								<a id="applybutt" style="width:170%;margin-top: 10px;" data-toggle="tab" href="#graphtypediv" class="btn btn-primary btn" role="button">APPLY</a>
+							
+							</div>
+
+						</div>
+
+<!-- //////////////////////////////////////////////////////////////////////////////// -->			
+
+
+					</div>
+
+				</div>
+			</div>
+
+
+
+<script type="text/javascript">
+
+		$(document).ready(function() {
+		$('.js-example-basic-multiple').select2();
+});
+
+</script>
+
+<script type="text/javascript" src="finte.js"></script>     
+
+
+</body>
+</html>
+
