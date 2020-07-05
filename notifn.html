@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="notifn.css">
+</head>
+<body>
+
+
+
+
+<div class="wrapper">
+
+	<ul id="links">
+
+		<li id="settingsbutton">Settings <i class="fas fa-cog"></i></li>
+		<li id="sharebutton">Share <i class="fas fa-share"></i></li>
+
+		
+
+		<li id="notif1" class="dropbtn" style="margin-top:5px;width:45px;height: 45px;">U2<i class="fas fa-bell"><span class="notf1nos"></span></i>
+			<div class="dropdown1">
+			</div>
+		</li>
+
+
+		<li id="notif2" class="dropbtn" style="margin-top:5px;width:45px;height: 45px;">U1<i class="fas fa-bell"><span class="notf2nos"></span></i>
+			<div class="dropdown2">		
+			</div> 
+  		</li>
+
+	</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div id="modal" class="modal">
+		<i id="closebutton1" class="fas fa-times" style="float: right;margin-right: 13px;margin-top: 8px;"></i>
+
+  <div id="modal-content">
+  	<div id="modalleft">
+	<textarea>
+		
+	</textarea><br><br>
+
+</div>
+<div id="modalright">
+
+	<select name="contactto" class="js-example-basic-multiple" id="contacts" class="form-control" multiple>
+			<option value="jim">Jim</option>
+			<option value="pam">Pam</option>
+			<option value="michael">Michael</option>
+			<option value="dwight">Dwight</option>
+			<option value="angela">Angela</option>
+			<option value="mose">Mose</option>
+	</select>
+	<br><br>
+
+
+    <button id="okbutt">SHARE</button>
+</div>
+  </div>
+
+</div>
+
+<!-- ///////////////////////////////////////////////////////////////////////////// -->
+
+
+<div id="modal2" class="modal">
+
+	<i id="okbutt2" class="fas fa-times" style="float: right;margin-right: 13px;margin-top: 8px;"></i> 	
+  	<div id="modal2-content">
+		
+		<div id="modal2left">
+		<div id="modal2text">
+		<textarea>
+		</textarea><br>
+
+		<div id="queryreactions">
+		<ul style="display: inline;list-style: none;">
+			<li id="lilike"><i style="font-size: 20px; color: steelblue; margin-right: 3px;" class="far fa-thumbs-up"></i><span id="likenos"></span></li>
+			<li id="licomment"><i style="font-size: 20px;margin-right: 3px;" class="fas fa-comments"></i><span id="commentnos"></span></li>
+			<li id="lireact"><i style="font-size: 20px;margin-right: 3px;" class="fas fa-grin-hearts"></i><span id="reactdisp"></span></li>
+				
+				<span id="reactnos">
+				<ul id="reactul">
+					<li id="r1"><i class="fas fa-grin-hearts"></i></li>
+					<li id="r2"><i class="fas fa-poop"></i></li>
+					<li id="r3"><i class="far fa-smile-beam"></i></li>
+					<li id="r4"><i class="far fa-grin-squint-tears"></i></li>
+				<!-- 	<li id="fas fa-grin-hearts"><i class="fas fa-grin-hearts"></i></li>
+					<li id="fas fa-poop"><i class="fas fa-poop"></i></li>
+					<li id="far fa-smile-beam"><i class="far fa-smile-beam"></i></li>
+					<li id="far fa-grin-squint-tears"><i class="far fa-grin-squint-tears"></i></li> -->
+				</ul>
+				</span></li>
+		</ul><br>
+		</div>
+		</div>
+	</div>
+	
+		<div id="modal2right">
+		
+		
+
+		<div id="alreadycomment"></div>
+
+		<div class="commentsection">
+			<input type="text" id="newcup" placeholder="Add a new comment..">
+			<input type="button" class="postbutton" value="POST">
+		</div>
+
+	</div>
+  </div>
+
+</div>
+
+
+
+
+
+
+<div id="container">
+
+
+	<div id="leftp">
+		Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+		Why do we use it?It is a long established fact that a r
+		Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+		Why do we use it?It is a long established fact that a r
+		Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+		Why do we use it?It is a long established fact that a r
+	
+
+	<div id="querybox">
+		<input type="text" id="query">
+	</div>
+	
+
+	</div>
+</div>
+
+
+
+<div id="outer">
+	<div id="rightp">
+		<ul id="settings">
+			<li id="darkbutton">Dark theme
+				<label class="switch">
+  				<input type="checkbox">
+  				<span class="slider round"></span>
+				</label>
+			</li>
+			
+			<li id="fontsi">
+			fontSize : <span id="fontval">10</span>
+			</li>
+			
+			<li>
+			<div id="bearer">
+				<div>
+			<input type="range" id="mover" class="myslider" min="16" max="50" value="10">
+			</div>
+			</li>
+			
+			<li>Auto-complete
+				<label>
+  				<input type="checkbox" style="height:18px;width: 16px;">
+				</label>
+			</li>
+		</ul>
+		
+	</div>
+</div>
+
+
+
+
+
+<script type="text/javascript">
+		$(document).ready(function() {
+				$('.js-example-basic-multiple').select2();
+});
+</script>
+<script type="text/javascript" src="notifn.js"></script>
+</body>
+</html>
