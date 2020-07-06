@@ -276,6 +276,7 @@ textarea{
 	color: white;
 	border-radius: 8px;
 	outline:none;
+	cursor: pointer;
 }
 
 #queryreactions{
