@@ -86,8 +86,8 @@ li#notif2 a,li#notif1 a{
   /*overflow: auto; */
   opacity: 0.99;
   border:1px solid #525252;
-  border-radius: 8px;
-  background-color:#cfcccc; /* Fallback color */
+  /*border-radius: 8px;*/
+  background-color:#e0e0e0; /* Fallback color */
   /*background-color: rgba(0,0,0,0.4); /* Black w/ opacity */*/
 }
 
@@ -96,11 +96,11 @@ li#notif2 a,li#notif1 a{
   /*background-color: #fefefe;*/
   border-radius: 10px;
   margin: 35px auto;  
-  padding: 10px;
+  padding: 20px;
   /*border: 1px solid #888;*/
   width: 80%; 
   height: 200px;
-
+  display: inline-block;
 }
 
 textarea{
@@ -118,6 +118,10 @@ span#reactnos{
 	display: none;
 }
 
+li.clickme{
+	display: inline;
+	margin-right: 4px;
+}
 
 /*
 .far .fa-thumbs-up{
@@ -139,12 +143,21 @@ span#reactnos{
 
 #lilike,#licomment,#lireact{
 float: left;
-margin-right: 40px;
-height: 30px;
+margin-right: 25px;
+height: 25px;
+/*padding:3px;*/
+/*background-color: steelblue;*/
+/*border-radius: 30px;*/
+/*border:1px solid white;*/
 	/*border:1px solid steelblue;*/
 	/*background-color:white;*/
 }
 
+
+#likenos,#commentnos,#reactdisp{
+	color:#383838;
+	font-size:20px;
+}
 
 
 /*/////////////////////////////////////////////////////////////////////*/
@@ -224,10 +237,11 @@ span.notf2nos{
   top: 90px;
   width: 700px; 
   height: 280px; 
-  border-radius: 8px;
+  /*border-radius: 8px;*/
   /*transition: linear 2s;*/
   border:1px solid #525252;
-  background-color: #cfcccc;
+  background-color: #e0e0e0;
+  /*#cfcccc;*/
   opacity:0.99; /* Fallback color */
   /*background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
@@ -253,7 +267,7 @@ textarea{
 
 }
 
-.postcomment{
+.postcomment,.commentos{
 	background-color: silver;
 	text-transform:uppercase;
 	border-radius: 3px;
@@ -289,14 +303,15 @@ textarea{
 	width: 50%;
     height: 142%;
     float: left;
+    /*margin-right: 20px;*/
 
 }
-
+/*
 #modal2left{
 	  background-color:#cfcfcf;
 
 }
-
+*/
 #modalright,#modal2right{
 	width:50%;
 	height: 350px;
@@ -305,6 +320,7 @@ textarea{
 	/*margin-left: 30px;*/
 }
 #modal2text > textarea{
+	border-width: thin;
 	height: 200px;
 	width:82%;
 	margin-left: 25px;
@@ -328,7 +344,7 @@ textarea{
   height: 42px;
   font-size: 16px;
   font-weight: bold;
-  background-color: #d1cdc2;
+  background-color: darkgray;
   border-radius: 3px;
   border:1px solid #b3afaf;
   outline: none;
@@ -539,7 +555,7 @@ input[type=text]{
 }
 */
 #leftp{
-	background-color: #858181;;
+	background-color: #d1e0d5;;
 	height: 500px;
 	/*width:1100px;*/
 	position:absolute;
