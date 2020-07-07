@@ -502,7 +502,7 @@ $(document).on("click",'.dropdown-content2 > a.droplinks',function(){
 			// $('#alreadycomment').empty();
 			for(var i=0;i<qobject.commentnos;i++){
 				var addr=$('#alreadycomment')
-				addr.append($('<div id="commentos'+i+'"'+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:5px;">'+qobject.comments[i].poster+'</div></b>'+'<em><div style="font-size:14px;text-indent:12px;">'+qobject.comments[i].value+'</div><em>'));
+				addr.append($('<div id="commentos'+i+'"'+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:5px;font-family: "OpenSansCondensed-Light";">'+qobject.comments[i].poster+'</div></b>'+'<em><div style="font-size:14px;text-indent:12px;	font-family: "OpenSansCondensed-LightItalic";">'+qobject.comments[i].value+'</div><em>'));
 
 
 				$('#commentos'+i).append($('<div class="commentreactions"><ul style="display: inline;list-style: none;"><li class="clickme" id="colike'+i+'"'+'><i style="font-size: 13px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span id="comlikenos'+i+'"'+'>'+qobject.comments[i].likenos+'</span></li><li class="clickme" id="cocomment'+i+'"'+'><i style="font-size: 13px;color: #383838;margin-right: 3px;" class="fas fa-comments"></i><span id="comreply'+i+'"'+'>'+qobject.comments[i].replynos+'</span></li></ul>'))
@@ -513,7 +513,7 @@ $(document).on("click",'.dropdown-content2 > a.droplinks',function(){
 
 
 				for(var j=0;j<qobject.comments[i].replynos;j++){
-					$('#replies'+qobject.comments[i].replynos).append($('<div id="reply'+qobject.comments[i].replynos+'">'+'<i style="rotation:90deg" class="fas fa-share"></i><hr style="color:white"><div id="replyos'+qobject.comments[i].replynos+'" '+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:35px;">'+qobject.comments[i].replier[j].name+'</div></b>'+'<em><div style="font-size:14px;text-indent:46px;">'+qobject.comments[i].reply[j]+'</div><em>'))
+					$('#replies'+qobject.comments[i].replynos).append($('<div id="reply'+qobject.comments[i].replynos+'" class="comrep">'+'<i style="rotation:90deg" class="fas fa-share"></i><hr style="color:white"><div id="replyos'+qobject.comments[i].replynos+'" '+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:35px;">'+qobject.comments[i].replier[j].name+'</div></b>'+'<em><div style="font-size:14px;text-indent:46px;">'+qobject.comments[i].reply[j]+'</div><em>'))
 				}
 
 			}
@@ -560,7 +560,7 @@ $(document).on("click",'.dropdown-content1 > a.droplinks',function(){
 		// $('#alreadycomment').empty();
 			for(var i=0;i<qobject.commentnos;i++){
 				var addr=$('#alreadycomment')
-				addr.append($('<div id="commentos'+i+'"'+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:5px;">'+qobject.comments[i].poster+'</div></b>'+'<em><div style="font-size:14px;text-indent:12px;">'+qobject.comments[i].value+'</div><em>'))
+				addr.append($('<div id="commentos'+i+'"'+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:5px;	font-family: "OpenSansCondensed-Light";">'+qobject.comments[i].poster+'</div></b>'+'<em><div style="font-size:14px;text-indent:12px;	font-family: "OpenSansCondensed-LightItalic";">'+qobject.comments[i].value+'</div><em>'))
 					// text(qobject.comments[i].poster+" : "+qobject.comments[i].value))
 
 
@@ -569,7 +569,7 @@ $(document).on("click",'.dropdown-content1 > a.droplinks',function(){
 				$('#commentos'+i).append($('<div id="replies'+qobject.comments[i].replynos+'">'));
 
 				for(var j=0;j<qobject.comments[i].replynos;j++){
-					$('#replies'+qobject.comments[i].replynos).append($('<div id="reply'+qobject.comments[i].replynos+'">'+'<i style="rotation:90deg" class="fas fa-share"></i><hr style="color:white"><div id="replyos'+qobject.comments[i].replynos+'" '+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:35px;">'+qobject.comments[i].replier[j].name+'</div></b>'+'<em><div style="font-size:14px;text-indent:46px;">'+qobject.comments[i].reply[j]+'</div><em>'))
+					$('#replies'+qobject.comments[i].replynos).append($('<div id="reply'+qobject.comments[i].replynos+'" class="comrep">'+'<i style="rotation:90deg" class="fas fa-share"></i><hr style="color:white"><div id="replyos'+qobject.comments[i].replynos+'" '+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:35px;">'+qobject.comments[i].replier[j].name+'</div></b>'+'<em><div style="font-size:14px;text-indent:46px;">'+qobject.comments[i].reply[j]+'</div><em>'))
 				}
 
 
@@ -621,7 +621,7 @@ $(document).on('click','li.clickme',function(){
 			
 				// console.log(qcomment.replynos)
 
-				$('.commentsection').append($('<input type="text" id="replyinput"><input id="replybutton" type="button" value="REPLY">'));
+				$('#alreadycomment').append($('<input type="text" id="replyinput"><input id="replybutton" type="button" value="REPLY">'));
 
 
 				$('#commentos'+noss).append($('<div id="replies'+qcomment.replynos+'">'));
@@ -629,7 +629,7 @@ $(document).on('click','li.clickme',function(){
 	$('#replybutton').on('click',function(){
 
 					
-					$('#replies'+qcomment.replynos).append($('<div id="reply'+qcomment.replynos+'">'+'<i style="rotation:90deg" class="fas fa-share"></i><hr style="color:white"><div id="replyos'+qcomment.replynos+'" '+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:35px;">'+senduser.name+'</div></b>'+'<em><div style="font-size:14px;text-indent:46px;">'+$('#replyinput').val()+'</div><em>'))
+					$('#replies'+qcomment.replynos).append($('<div id="reply'+qcomment.replynos+'" class="comrep">'+'<i style="rotation:90deg" class="fas fa-share"></i><hr style="color:white"><div id="replyos'+qcomment.replynos+'" '+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:35px;">'+senduser.name+'</div></b>'+'<em><div style="font-size:14px;text-indent:46px;">'+$('#replyinput').val()+'</div><em>'))
 
 						// console.log("agathai")
 							// console.log("ivdai")
@@ -693,9 +693,9 @@ $('#lilike').on("click",function(){
 
 
 
-$('#lireact').on("click",function(){
-	$('span#reactnos').css("display","block")
-});
+// $('#lireact').on("click",function(){
+// 	$('span#reactnos').css("display","block")
+// });
 
 
 
@@ -790,7 +790,7 @@ $(document).on("click",'.postbutton',function(){
 
 	var adder=$('#alreadycomment');
 
-	adder.append($('<div class="postcomment"></div>').html('<b><div style="font-size:15px;text-indent:5px;">'+senduser.name+'</div></b>'+'<em><div style="font-size:14px;text-indent:12px;">'+comm+'</div><em>'))
+	adder.append($('<div class="postcomment"></div>').html('<b><div style="font-size:15px;text-indent:5px;font-family: "OpenSansCondensed-Light";">'+senduser.name+'</div></b>'+'<em><div style="font-size:14px;text-indent:12px;font-family: "OpenSansCondensed-LightItalic";">'+comm+'</div><em>'))
 
 	senduser.comment(qobject)
 

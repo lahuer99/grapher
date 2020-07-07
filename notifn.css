@@ -1,5 +1,16 @@
 
-
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
 
 
 
@@ -32,11 +43,15 @@ li#notif2 a,li#notif1 a{
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  max-height: 300px;
+  border-radius:0px 7px 7px 7px;
+  overflow: auto;
 }
 
 /* Links inside the dropdown */
 .dropdown-content1 a,.dropdown-content2 a {
   color: black;
+  background-color: #b5b3b3;
   padding: 6px 6px;
   text-decoration: none;
   display: block;
@@ -86,7 +101,7 @@ li#notif2 a,li#notif1 a{
   /*overflow: auto; */
   opacity: 0.99;
   border:1px solid #525252;
-  /*border-radius: 8px;*/
+  border-radius: 39px;
   background-color:#e0e0e0; /* Fallback color */
   /*background-color: rgba(0,0,0,0.4); /* Black w/ opacity */*/
 }
@@ -143,7 +158,8 @@ li.clickme{
 
 #lilike,#licomment,#lireact{
 float: left;
-margin-right: 25px;
+margin-left: 15px;
+margin-right: 3px;
 height: 25px;
 /*padding:3px;*/
 /*background-color: steelblue;*/
@@ -217,11 +233,21 @@ span.notf2nos{
 
 
 
+a.droplinks{
+	height: 42px;
+	line-height: 19px;
+	padding:0px;
+	padding-top:6px;
+	  background-color: #b5b3b3;
+	  border:1px solid darkgray;
+}
 
 
-
-
-
+hr{
+	  background-color: #b5b3b3;
+color: white;
+margin: 2px;
+}
 
 
 
@@ -259,6 +285,19 @@ span.notf2nos{
 
 }
 
+
+@font-face {
+    font-family: "OpenSansCondensed-Light";
+    src: url('OpenSansCondensed-Light.ttf') format("truetype");
+}
+
+@font-face {
+    font-family: "OpenSansCondensed-LightItalic";
+    src: url('OpenSansCondensed-LightItalic.ttf') format("truetype");
+}
+
+
+
 textarea{
 	height: 52%;
 	width:99%;
@@ -268,11 +307,16 @@ textarea{
 }
 
 .postcomment,.commentos{
-	background-color: silver;
+	background-color: #9a9a9a;
+	/*font-size:20px;*/
+	/*letter-spacing: 2px;*/
+
 	text-transform:uppercase;
 	border-radius: 3px;
 	margin-bottom: 13px;
+	/*color: white;*/
 	padding-left:5px;
+	border-radius: 0px 23px 23px 23px;
 
 }
 
@@ -294,8 +338,8 @@ textarea{
 }
 
 #queryreactions{
-	margin-top: 20px;
-	margin-left: 41px;
+	/*margin-top: 20px;*/
+	margin-left: 21px;
 }
 
 
@@ -325,6 +369,7 @@ textarea{
 	width:82%;
 	margin-left: 25px;
 	margin-top: 7px;
+	border-radius: 0px 9px 9px 9px;
 }
 
 /*#modal2right{
@@ -382,11 +427,34 @@ input[type=text]{
 
 
 
+div.comrep{
+	/*background-color: yellow;*/
+	/*color: white;*/
+	background-color: silver;
+    border-radius: 0px 15px 15px 15px;
+    margin-left: 24px;
+    margin-top:3px;
+}
 
 
+#replyinput{
+	width: 170px;
+    height: 20px;
+    border-radius: 8px;
+    margin-right: 8px;
+    margin-left:50px;
+}
 
 
-
+#replybutton{
+	width:58px;
+	height: 30px;
+	background-color: steelblue;
+	color: white;
+	border-radius: 8px;
+	outline:none;
+	cursor: pointer;
+}
 
 
 
