@@ -111,7 +111,7 @@ li#notif2 a,li#notif1 a{
 #modal2-content {
   /*background-color: #fefefe;*/
   border-radius: 10px;
-  margin: 35px auto;  
+  margin: 35px;  
   padding: 20px;
   /*border: 1px solid #888;*/
   width: 80%; 
@@ -313,11 +313,11 @@ textarea{
 }
 
 .postcomment,.commentos{
-	background-color: #9a9a9a;
+	/*background-color: #9a9a9a;*/
 	/*font-size:20px;*/
 	/*letter-spacing: 2px;*/
 
-	text-transform:uppercase;
+	/*text-transform:uppercase;*/
 	border-radius: 3px;
 	margin-bottom: 13px;
 	/*color: white;*/
@@ -436,9 +436,9 @@ input[type=text]{
 div.comrep{
 	/*background-color: yellow;*/
 	/*color: white;*/
-	background-color: silver;
-    border-radius: 0px 15px 15px 15px;
-    margin-left: 24px;
+	background-color:#9a9a9a ;
+    border-radius: 0px 45px 45px 45px;
+    margin-left: 54px;
     margin-top:3px;
 }
 
@@ -476,7 +476,11 @@ div.comrep{
 */
 
 
-
+.commain{
+  background-color: silver;
+  border-radius: 0px 23px 23px 23px;
+  margin-bottom:10px;
+}
 
 
 
