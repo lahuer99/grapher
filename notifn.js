@@ -82,34 +82,7 @@ $('#mover').on('input',function(){
 // NOTIFN
 
 
-
-
-
-// class Sender {
-
-//   constructor(nam) {
-//     this.name = nam;
-//   }
-//   action(){
-//   	sharequery();
-//   	like();
-//   	comment();
-//   	sticker();
-//   }
-// }
-// // mycar = new Car("Ford")
-
-// class Receiver {
-
-//   constructor(nam) {
-//     this.name = nam;
-//     this.notfnos=0;
-//   }
-
-// }
-
-Stickers=[':)',':(',':/',':*']
-Qlist=[];
+var Qlist=[];
 
 class Query{
 	constructor(val,qsender,qreceiver){
@@ -136,6 +109,7 @@ class Comment{
 		this.replynos=0;
 		this.replier=[];
 		this.reply=[];
+		this.replylikenos=[];
 		// this.commentnos
 	}
 }
@@ -380,13 +354,6 @@ var idinc2=0;
 
 var nott=$('<div></div>').appendTo($('.dropdown1'));
 nott.addClass("dropdown-content1")
-// nott.append($("<div></div>").attr('id','qq'+0))
-// .text(val)
-// nott.append($("<hr>"))
-
-// $('div#qq'+0).text('currently no notifications')
-// $('div#qq'+0).addClass("droplinks")
-
 
 var nott2=$('<div></div>').appendTo($('.dropdown2'));
 nott2.addClass("dropdown-content2")
@@ -502,18 +469,22 @@ $(document).on("click",'.dropdown-content2 > a.droplinks',function(){
 			// $('#alreadycomment').empty();
 			for(var i=0;i<qobject.commentnos;i++){
 				var addr=$('#alreadycomment')
+				// addr.append
 				addr.append($('<div id="commentos'+i+'"'+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:5px;font-family: "OpenSansCondensed-Light";">'+qobject.comments[i].poster+'</div></b>'+'<em><div style="font-size:14px;text-indent:12px;	font-family: "OpenSansCondensed-LightItalic";">'+qobject.comments[i].value+'</div><em>'));
 
 
 				$('#commentos'+i).append($('<div class="commentreactions"><ul style="display: inline;list-style: none;"><li class="clickme" id="colike'+i+'"'+'><i style="font-size: 13px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span id="comlikenos'+i+'"'+'>'+qobject.comments[i].likenos+'</span></li><li class="clickme" id="cocomment'+i+'"'+'><i style="font-size: 13px;color: #383838;margin-right: 3px;" class="fas fa-comments"></i><span id="comreply'+i+'"'+'>'+qobject.comments[i].replynos+'</span></li></ul>'))
 					// text(qobject.comments[i].poster+" : "+qobject.comments[i].value))
 
+					$('#commentos'+i).append($('<input class="comreplyinp" type="text" id="replyinput'+i+'"'+'><input class="comreplies" id="replybutton'+i+'" type="button" value="REPLY">'));
 
-					$('#commentos'+i).append($('<div id="replies'+qobject.comments[i].replynos+'">'));
+
+					$('#commentos'+i).append($('<div class="replymain" id="replies'+i+'">'));
 
 
 				for(var j=0;j<qobject.comments[i].replynos;j++){
-					$('#replies'+qobject.comments[i].replynos).append($('<div id="reply'+qobject.comments[i].replynos+'" class="comrep">'+'<i style="rotation:90deg" class="fas fa-share"></i><hr style="color:white"><div id="replyos'+qobject.comments[i].replynos+'" '+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:35px;">'+qobject.comments[i].replier[j].name+'</div></b>'+'<em><div style="font-size:14px;text-indent:46px;">'+qobject.comments[i].reply[j]+'</div><em>'))
+					$('#replies'+i).append($('<div id="reply'+j+'" class="comrep">'+'<i style="rotation:90deg" class="fas fa-share"></i><hr style="color:white"><div id="replyos'+j+'" '+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:35px;">'+qobject.comments[i].replier[j].name+'</div></b>'+'<em><div style="font-size:14px;text-indent:46px;">'+qobject.comments[i].reply[j]+'</div><em>'))
+					$('#reply'+j).append($('<li class="repclickme" id="replike'+j+'"'+'><i style="font-size: 10px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span id="comreplikenos'+j+'"'+'>'+qobject.comments[i].likenos+'</span></li>'))
 				}
 
 			}
@@ -565,11 +536,21 @@ $(document).on("click",'.dropdown-content1 > a.droplinks',function(){
 
 
 				$('#commentos'+i).append($('<div class="commentreactions"><ul style="display: inline;list-style: none;"><li class="clickme" id="colike'+i+'"'+'><i style="font-size: 13px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span id="comlikenos'+i+'"'+'>'+qobject.comments[i].likenos+'</span></li><li class="clickme" id="cocomment'+i+'"'+'><i style="font-size: 13px;color: #383838;margin-right: 3px;" class="fas fa-comments"></i><span id="comreply'+i+'"'+'>'+qobject.comments[i].replynos+'</span></li></ul></div>'))
+
+
+
+					$('#commentos'+i).append($('<input class="comreplyinp" type="text" id="replyinput'+i+'"'+'><input class="comreplies" id="replybutton'+i+'" type="button" value="REPLY">'));
+
+
 						
-				$('#commentos'+i).append($('<div id="replies'+qobject.comments[i].replynos+'">'));
+				$('#commentos'+i).append($('<div class="replymain" id="replies'+i+'">'));
 
 				for(var j=0;j<qobject.comments[i].replynos;j++){
-					$('#replies'+qobject.comments[i].replynos).append($('<div id="reply'+qobject.comments[i].replynos+'" class="comrep">'+'<i style="rotation:90deg" class="fas fa-share"></i><hr style="color:white"><div id="replyos'+qobject.comments[i].replynos+'" '+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:35px;">'+qobject.comments[i].replier[j].name+'</div></b>'+'<em><div style="font-size:14px;text-indent:46px;">'+qobject.comments[i].reply[j]+'</div><em>'))
+					$('#replies'+i).append($('<div id="reply'+j+'" class="comrep">'+'<i style="rotation:90deg" class="fas fa-share"></i><hr style="color:white"><div id="replyos'+j+'" '+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:35px;">'+qobject.comments[i].replier[j].name+'</div></b>'+'<em><div style="font-size:14px;text-indent:46px;">'+qobject.comments[i].reply[j]+'</div><em>'))
+
+
+					$('#reply'+j).append($('<li class="repclickme" id="replike'+j+'"'+'><i style="font-size: 10px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span id="comreplikenos'+j+'"'+'>'+qobject.comments[i].likenos+'</span></li>'))
+
 				}
 
 
@@ -595,6 +576,8 @@ $(document).on("click",'.dropdown-content1 > a.droplinks',function(){
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
 var noss;
 $(document).on('click','li.clickme',function(){
 // $('li.clickme').on('click',function(){
@@ -611,38 +594,53 @@ $(document).on('click','li.clickme',function(){
 				// console.log('times')
 				qcomment.likenos+=1;
 				$('span#comlikenos'+noss).text(qcomment.likenos)
-
+				// $()
 				senduser.likecomment(qobject)
 			// }
 		}
 	else{
+
+
 			// if(qcomment.replynos==0){
 				// console.log('times')
 			
 				// console.log(qcomment.replynos)
 
-				$('#alreadycomment').append($('<input type="text" id="replyinput"><input id="replybutton" type="button" value="REPLY">'));
+				// $('#commentos'+noss).append($('<input type="text" id="replyinput"><input id="replybutton" type="button" value="REPLY">'));
 
 
-				$('#commentos'+noss).append($('<div id="replies'+qcomment.replynos+'">'));
+				// $('#commentos'+noss).append($('<div id="replies'+qcomment.replynos+'">'));
 
-	$('#replybutton').on('click',function(){
+
+
+
+
+
+				//to show replies
+
+
+
+
+
+
+
+	// $('#replybutton').on('click',function(){
 
 					
-					$('#replies'+qcomment.replynos).append($('<div id="reply'+qcomment.replynos+'" class="comrep">'+'<i style="rotation:90deg" class="fas fa-share"></i><hr style="color:white"><div id="replyos'+qcomment.replynos+'" '+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:35px;">'+senduser.name+'</div></b>'+'<em><div style="font-size:14px;text-indent:46px;">'+$('#replyinput').val()+'</div><em>'))
+	// 				$('#replies'+qcomment.replynos).append($('<div id="reply'+qcomment.replynos+'" class="comrep">'+'<i style="rotation:90deg" class="fas fa-share"></i><hr style="color:white"><div id="replyos'+qcomment.replynos+'" '+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:35px;">'+senduser.name+'</div></b>'+'<em><div style="font-size:14px;text-indent:46px;">'+$('#replyinput').val()+'</div><em>'))
 
-						// console.log("agathai")
-							// console.log("ivdai")
-					qcomment.replynos+=1;
-				$('span#comreply'+noss).text(qcomment.replynos)
-				qcomment.replier.push(senduser)
-				qcomment.reply.push($('#replyinput').val())
+	// 					// console.log("agathai")
+	// 						// console.log("ivdai")
+	// 				qcomment.replynos+=1;
+	// 			$('span#comreply'+noss).text(qcomment.replynos)
+	// 			qcomment.replier.push(senduser)
+	// 			qcomment.reply.push($('#replyinput').val())
 				
-				senduser.replycomment(qobject)
+	// 			senduser.replycomment(qobject)
 
-				$('#replyinput').remove()
-				$('#replybutton').remove();
-				});
+	// 			$('#replyinput').remove()
+	// 			$('#replybutton').remove();
+	// 			});
 
 			
 			// }
@@ -651,32 +649,6 @@ $(document).on('click','li.clickme',function(){
 });
 
 
-
-
-// $('li.clickme').on('click',function(){
-
-// 	var vall=$(this).attr('id')
-// 	var noss=vall.slice(-1)
-
-// 	var qcomment=qobject.comment[noss]
-// 	console.log(qcomment)
-// 	if(qcomment.replynos==0){
-// 				// console.log('times')
-// 				qcomment.replynos+=1;
-// 				$('span#comreply'+noss).text(qcomment.replynos)
-
-// 				senduser.replycomment(qcomment,noss)
-// 			}
-// })
-
-
-
-
-
-
-// i.fa-thumbs-up
-// if($('#modal2').css('display')=='block'){
-// 	console.log("in")
 $('#lilike').on("click",function(){
 		// console.log(qobject.likenos)
 			if(qobject.likenos==0){
@@ -688,73 +660,24 @@ $('#lilike').on("click",function(){
 			}
 });
 
-// }
 
 
+// $(document).on("click",'#reactul>li',function(){
 
 
-// $('#lireact').on("click",function(){
-// 	$('span#reactnos').css("display","block")
-// });
-
-
-
-// var reacticons=$('#reactnos i')
-// for(const r of reacticons){
-// 	r.on("click",function(){
-// 		var cls=r.attr('class')
-// 		console.log(cls)
-// 		$('#reactdisp').html('<i class='+cls+'></i>')
-// 		$('span#reactnos').css("display","none")
-// 	})
-// }
-
-
-// $('#reactnos li i').
-
-// for(var i=0;i<$('#reactul li i').length;i++){
-
-$(document).on("click",'#reactul>li',function(){
-
-// })
-			// $('#reactul li i').on("click",function(){
-			// console.log(e.class)
-			var cls=$(this).attr('id')
-			// console.log(cls)
-			// $('#reactdisp').html(('<i class='.concat(cls)).concat('></i>'))
+// 			var cls=$(this).attr('id')
+// 			// console.log(cls)
+// 			// $('#reactdisp').html(('<i class='.concat(cls)).concat('></i>'))
 	
-			qobject.sticknos+=1;
+// 			qobject.sticknos+=1;
 
-			$('#reactdisp').text(qobject.sticknos)
+// 			$('#reactdisp').text(qobject.sticknos)
 
-			$('span#reactnos').css("display","none")
+// 			$('span#reactnos').css("display","none")
 
-			senduser.sticker(qobject);
-			});
-// }
-
-
-
-
-
-// ADding comments section
-
-
-// var adder=$('.dropdown-content2')
-
-//   		var ll=this.notfs.length-1
-
-//   		// adder.append($("<li></li>").attr('value','qq'+ll))
-//   		adder.append($("<a></a>").attr('id','2qq'+ll))
-//   		adder.append($("<hr>"))
-
-//   		$('a#2qq'+ll).text(this.notfs[ll])
-// 		$('a#2qq'+ll).addClass("droplinks")
-
-
-// 		$('span.notf2nos').css("background-color","red")
-// 		$('span.notf2nos').text(this.notfnos)
-
+// 			senduser.sticker(qobject);
+// 			});
+// // }
 
 
 
@@ -790,7 +713,44 @@ $(document).on("click",'.postbutton',function(){
 
 	var adder=$('#alreadycomment');
 
-	adder.append($('<div class="postcomment"></div>').html('<b><div style="font-size:15px;text-indent:5px;font-family: "OpenSansCondensed-Light";">'+senduser.name+'</div></b>'+'<em><div style="font-size:14px;text-indent:12px;font-family: "OpenSansCondensed-LightItalic";">'+comm+'</div><em>'))
+
+	adder.append($('<div id="commentos'+(qobject.commentnos-1)+'"'+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:5px;">'+qobject.comments[qobject.commentnos-1].poster+'</div></b>'+'<em><div style="font-size:14px;text-indent:12px;">'+qobject.comments[qobject.commentnos-1].value+'</div><em>'))
+
+	// adder.append($('<div class="postcomment"></div>').html('<b><div style="font-size:15px;text-indent:5px;font-family: "OpenSansCondensed-Light";">'+senduser.name+'</div></b>'+'<em><div style="font-size:14px;text-indent:12px;font-family: "OpenSansCondensed-LightItalic";">'+comm+'</div><em>'))
+
+
+	$('#commentos'+(qobject.commentnos-1)).append($('<div class="commentreactions"><ul style="display: inline;list-style: none;"><li class="clickme" id="colike'+(qobject.commentnos-1)+'"'+'><i style="font-size: 13px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span id="comlikenos'+(qobject.commentnos-1)+'"'+'>'+qobject.comments[qobject.commentnos-1].likenos+'</span></li><li class="clickme" id="cocomment'+(qobject.commentnos-1)+'"'+'><i style="font-size: 13px;color: #383838;margin-right: 3px;" class="fas fa-comments"></i><span id="comreply'+(qobject.commentnos-1)+'"'+'>'+qobject.comments[qobject.commentnos-1].replynos+'</span></li></ul></div>'))
+						
+
+
+				$('#commentos'+(qobject.commentnos-1)).append($('<input class="comreplyinp" type="text" id="replyinput'+(qobject.commentnos-1)+'"'+'><input class="comreplies" id="replybutton'+(qobject.commentnos-1)+'" type="button" value="REPLY">'));
+
+				$('#commentos'+(qobject.commentnos-1)).append($('<div class="replymain" id="replies'+(qobject.commentnos-1)+'">'));
+
+				// $('#commentos'+noss).append($('<div id="replies'+qcomment.replynos+'">'));
+
+
+
+				// $('#replybutton').on('click',function(){
+
+					
+				// 	$('#replies'+qobject.comments[qobject.commentnos-1].replynos).append($('<div id="reply'+qobject.comments[qobject.commentnos-1].replynos+'" class="comrep">'+'<i style="rotation:90deg" class="fas fa-share"></i><hr style="color:white"><div id="replyos'+qobject.comments[qobject.commentnos-1].replynos+'" '+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:35px;">'+senduser.name+'</div></b>'+'<em><div style="font-size:14px;text-indent:46px;">'+$('#replyinput').val()+'</div><em>'))
+
+				// 		// console.log("agathai")
+				// 			// console.log("ivdai")
+				// 	qobject.comments[qobject.commentnos-1].replynos+=1;
+				// $('span#comreply'+noss).text(qobject.comments[qobject.commentnos-1].replynos)
+				// qobject.comments[qobject.commentnos-1].replier.push(senduser)
+				// qobject.comments[qobject.commentnos-1].reply.push($('#replyinput').val())
+				
+				// senduser.replycomment(qobject)
+
+				// $('#replyinput').val("")
+				// // $('#replybutton').remove();
+				// });
+
+// $('#replyinput').remove()
+// 				$('#replybutton').remove();
 
 	senduser.comment(qobject)
 
@@ -806,13 +766,52 @@ $(document).on("click",'.postbutton',function(){
 
 
 
+$(document).on("click",".comreplies",function(){
+// $('#replybutton').on('click',function(){
+
+var vall=$(this).attr('id')
+	aid=vall.slice(-1)
+	console.log(aid)
+					
+					$('#replies'+aid).append($('<div id="reply'+qobject.comments[aid].replynos+'" class="comrep">'+'<i style="rotation:90deg" class="fas fa-share"></i><hr style="color:white"><div id="replyos'+qobject.comments[aid].replynos+'" '+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:35px;">'+senduser.name+'</div></b>'+'<em><div style="font-size:14px;text-indent:46px;">'+$('#replyinput'+aid).val()+'</div><em>'))
+
+					$('#reply'+qobject.comments[aid].replynos).append($('<li class="repclickme" id="replike'+qobject.comments[aid].replynos+'"'+'><i style="font-size: 10px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span id="comreplikenos'+qobject.comments[aid].replynos+'"'+'>'+qobject.comments[aid].likenos+'</span></li>'))
+
+
+						// console.log("agathai")
+							// console.log("ivdai")
+					qobject.comments[aid].replynos+=1;
+				$('span#comreply'+(aid)).text(qobject.comments[aid].replynos)
+				qobject.comments[aid].replier.push(senduser)
+				qobject.comments[aid].reply.push($('#replyinput'+aid).val())
+				
+				senduser.replycomment(qobject)
+
+				$('#replyinput'+aid).val("")
+				// $('#replybutton').remove();
+				});
+
+		// qcomment.replynos+=1;
+		// 		$('span#comreply'+noss).text(qcomment.replynos)
+		// 		qcomment.replier.push(senduser)
+		// 		qcomment.reply.push($('#replyinput').val())
+				
+		// 		senduser.replycomment(qobject)
 
 
 
+//reply like
 
+// $(document).on("click",'.repclickme',function(){
 
+// var vall=$(this).attr('id')
+// var noo=vall.slice(-1)
+// 	qobject.comments[].likenos+=1;
+// 		$('span#comreplikenos'+).
+// 				$('span#likenos').text(qobject.likenos)
 
-
+// 				senduser.like(qobject)
+// })
 
 
 
@@ -832,6 +831,8 @@ $('#okbutt2').on("click",function(){
 		$('.postcomment').remove()
 		$('.commentos').remove()
 		$('.commentreactions').remove()
+		$('#replyinput').remove()
+				$('#replybutton').remove();
 	// receiveuser=senduser;
 	// senduser=usr1;
 			

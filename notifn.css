@@ -306,6 +306,11 @@ textarea{
 
 }
 
+.maincomment{
+    background-color: #9a9a9a;
+
+}
+
 .postcomment,.commentos{
 	background-color: #9a9a9a;
 	/*font-size:20px;*/
@@ -437,16 +442,17 @@ div.comrep{
 }
 
 
-#replyinput{
+.comreplyinp{
 	width: 170px;
     height: 20px;
     border-radius: 8px;
     margin-right: 8px;
     margin-left:50px;
+    opacity: 0.9;
 }
 
 
-#replybutton{
+.comreplies{
 	width:58px;
 	height: 30px;
 	background-color: steelblue;
@@ -457,8 +463,16 @@ div.comrep{
 }
 
 
+.repclickme{
+  margin-left: 50px;
+  list-style: none;
+}
 
-
+/*
+.replymain{
+  display: none;
+}
+*/
 
 
 
