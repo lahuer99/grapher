@@ -101,7 +101,7 @@ li#notif2 a,li#notif1 a{
   /*overflow: auto; */
   opacity: 0.99;
   border:1px solid #525252;
-  border-radius: 39px;
+  border-radius: 29px;
   background-color:#e0e0e0; /* Fallback color */
   /*background-color: rgba(0,0,0,0.4); /* Black w/ opacity */*/
 }
