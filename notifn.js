@@ -470,8 +470,11 @@ $(document).on("click",'.dropdown-content2 > a.droplinks',function(){
 			for(var i=0;i<qobject.commentnos;i++){
 				var addr=$('#alreadycomment')
 				// addr.append
-				addr.append($('<div id="commentos'+i+'"'+'class="commentos"></div>').html('<div class="commain"><b><div style="font-size:15px;text-indent:5px;font-family: "OpenSansCondensed-Light";">'+qobject.comments[i].poster+'</div></b>'+'<em><div style="font-size:14px;text-indent:12px;	font-family: "OpenSansCondensed-LightItalic";">'+qobject.comments[i].value+'</div><em><div class="commentreactions"><ul style="display: inline;list-style: none;"><li class="clickme" id="colike'+i+'"'+'><i style="font-size: 13px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span id="comlikenos'+i+'"'+'>'+qobject.comments[i].likenos+'</span></li><li class="clickme" id="cocomment'+i+'"'+'><i style="font-size: 13px;color: #383838;margin-right: 3px;" class="fas fa-comments"></i><span id="comreply'+i+'"'+'>'+qobject.comments[i].replynos+'</span></li></ul></div>'))
+				addr.append($('<div id="commentos'+i+'"'+'class="commentos"></div>').html('<div class="commain"><b><div style="font-size:15px;text-indent:5px;font-family: "OpenSansCondensed-Light";">'+qobject.comments[i].poster+'</div></b>'+'<em><div style="font-size:14px;text-indent:12px;	font-family: "OpenSansCondensed-LightItalic";" id="comno'+i+'"><span  id="comno'+i+'">'+qobject.comments[i].value+'</span></div><em> <li  id="edcom'+i+'" class="deled"><i class="far fa-edit"></i><li class="deled" id="delcom'+i+'"><i class="fas fa-trash-alt"></i></li>    <div class="commentreactions"><ul style="display: inline;list-style: none;"><li class="clickme" id="colike'+i+'"'+'><i style="font-size: 13px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span id="comlikenos'+i+'"'+'>'+qobject.comments[i].likenos+'</span></li><li class="clickme" id="cocomment'+i+'"'+'><i style="font-size: 13px;color: #383838;margin-right: 3px;" class="fas fa-comments"></i><span id="comreply'+i+'"'+'>'+qobject.comments[i].replynos+'</span></li></ul></div>'))
 					// text(qobject.comments[i].poster+" : "+qobject.comments[i].value))
+
+					// $('#commentos'+i).append($('<li id="edcom'+i+'" class="deled"><i style="position: relative;top: 65px;left: 595px;" class="far fa-edit"></i><li class="deled" id="delcom'+i+'"><i style="position: relative;top: 65px;left: 620px;" class="fas fa-trash-alt"></i></li>'))
+
 
 					$('#commentos'+i).append($('<input class="comreplyinp" type="text" id="replyinput'+i+'"'+'><input class="comreplies" id="replybutton'+i+'" type="button" value="REPLY">'));
 
@@ -480,8 +483,10 @@ $(document).on("click",'.dropdown-content2 > a.droplinks',function(){
 
 
 				for(var j=0;j<qobject.comments[i].replynos;j++){
-					$('#replies'+i).append($('<div id="reply'+j+'" class="comrep">'+'<i style="rotation:90deg" class="fas fa-share"></i><hr style="color:white"><div id="replyos'+j+'" '+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:15px;">'+qobject.comments[i].replier[j].name+'</div></b>'+'<em><div style="font-size:14px;text-indent:26px;">'+qobject.comments[i].reply[j]+'</div><em>'))
-					$('#reply'+j).append($('<li class="repclickme" id="replike'+j+'"'+'><i style="font-size: 12px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span style="font-size:11px" id="comreplikenos'+j+'"'+'>'+qobject.comments[i].likenos+'</span></li>'))
+					$('#replies'+i).append($('<div id="'+i+'reply'+j+'" class="comrep">'+'<i style="rotation:90deg" class="fas fa-share"></i><hr style="color:white"><div id="'+i+'replyos'+j+'" '+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:15px;">'+qobject.comments[i].replier[j].name+'</div></b>'+'<em><div style="font-size:14px;text-indent:26px;"><span id="'+i+'repno'+j+'">'+qobject.comments[i].reply[j]+'</span></div><em>'))
+					$('#'+i+'reply'+j).append($('<li class="repclickme" id="'+i+'replike'+j+'"'+'><i style="font-size: 12px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span style="font-size:11px" id="'+i+'comreplikenos'+j+'"'+'>'+qobject.comments[i].likenos+'</span></li>'))
+
+					$('#'+i+'reply'+j).append($('<li id="'+i+'edrep'+j+'" class="repdeled"><i class="far fa-edit"></i><li class="repdeled" id="'+i+'delrep'+j+'"><i class="fas fa-trash-alt"></i></li>'))
 				}
 
 			}
@@ -528,7 +533,10 @@ $(document).on("click",'.dropdown-content1 > a.droplinks',function(){
 		// $('#alreadycomment').empty();
 			for(var i=0;i<qobject.commentnos;i++){
 				var addr=$('#alreadycomment')
-				addr.append($('<div id="commentos'+i+'"'+'class="commentos"></div>').html('<div class="commain"><b><div style="font-size:15px;text-indent:5px;	font-family: "OpenSansCondensed-Light";">'+qobject.comments[i].poster+'</div></b>'+'<em><div style="font-size:14px;text-indent:12px;	font-family: "OpenSansCondensed-LightItalic";">'+qobject.comments[i].value+'</div><em><div class="commentreactions"><ul style="display: inline;list-style: none;"><li class="clickme" id="colike'+i+'"'+'><i style="font-size: 13px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span id="comlikenos'+i+'"'+'>'+qobject.comments[i].likenos+'</span></li><li class="clickme" id="cocomment'+i+'"'+'><i style="font-size: 13px;color: #383838;margin-right: 3px;" class="fas fa-comments"></i><span id="comreply'+i+'"'+'>'+qobject.comments[i].replynos+'</span></li></ul></div></div>'))
+				addr.append($('<div id="commentos'+i+'"'+'class="commentos"></div>').html('<div class="commain"><b><div style="font-size:15px;text-indent:5px;	font-family: "OpenSansCondensed-Light";">'+qobject.comments[i].poster+'</div></b>'+'<em><div style="font-size:14px;text-indent:12px;	font-family: "OpenSansCondensed-LightItalic";"><span  id="comno'+i+'">'+qobject.comments[i].value+'</span></div><em>  <li  id="edcom'+i+'" class="deled"><i class="far fa-edit"></i><li class="deled" id="delcom'+i+'"><i class="fas fa-trash-alt"></i></li>    <div class="commentreactions"><ul style="display: inline;list-style: none;"><li class="clickme" id="colike'+i+'"'+'><i style="font-size: 13px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span id="comlikenos'+i+'"'+'>'+qobject.comments[i].likenos+'</span></li><li class="clickme" id="cocomment'+i+'"'+'><i style="font-size: 13px;color: #383838;margin-right: 3px;" class="fas fa-comments"></i><span id="comreply'+i+'"'+'>'+qobject.comments[i].replynos+'</span></li></ul></div></div>'))
+
+
+					// $('#commentos'+i).append($('<li  id="edcom'+i+'" class="deled"><i style="position: relative;top: 65px;left: 595px;" class="far fa-edit"></i><li class="deled" id="delcom'+i+'"><i style="position: relative;top: 65px;left: 620px;" class="fas fa-trash-alt"></i></li>'))
 
 
 
@@ -539,10 +547,12 @@ $(document).on("click",'.dropdown-content1 > a.droplinks',function(){
 				$('#commentos'+i).append($('<div class="replymain" id="replies'+i+'">'));
 
 				for(var j=0;j<qobject.comments[i].replynos;j++){
-					$('#replies'+i).append($('<div id="reply'+j+'" class="comrep">'+'<i style="rotation:90deg" class="fas fa-share"></i><hr style="color:white"><div id="replyos'+j+'" '+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:15px;">'+qobject.comments[i].replier[j].name+'</div></b>'+'<em><div style="font-size:14px;text-indent:26px;">'+qobject.comments[i].reply[j]+'</div><em>'))
+					$('#replies'+i).append($('<div id="'+i+'reply'+j+'" class="comrep">'+'<i style="rotation:90deg" class="fas fa-share"></i><hr style="color:white"><div id="'+i+'replyos'+j+'" '+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:15px;">'+qobject.comments[i].replier[j].name+'</div></b>'+'<em><div style="font-size:14px;text-indent:26px;"><span id="'+i+'repno'+j+'">'+qobject.comments[i].reply[j]+'</span></div><em>'))
 
 
-					$('#reply'+j).append($('<li class="repclickme" id="replike'+j+'"'+'><i style="font-size: 12px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span style="font-size:11px" id="comreplikenos'+j+'"'+'>'+qobject.comments[i].likenos+'</span></li>'))
+					$('#'+i+'reply'+j).append($('<li class="repclickme" id="'+i+'replike'+j+'"'+'><i style="font-size: 12px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span style="font-size:11px" id="comreplikenos'+j+'"'+'>'+qobject.comments[i].likenos+'</span></li>'))
+
+					$('#'+i+'reply'+j).append($('<li id="'+i+'edrep'+j+'" class="repdeled"><i style="position: relative;top: 160px;left: 595px;" class="far fa-edit"></i><li class="repdeled" id="'+i+'delrep'+j+'"><i style="position: relative;top: 160px;left: 620px;" class="fas fa-trash-alt"></i></li>'))
 
 				}
 
@@ -560,6 +570,128 @@ $(document).on("click",'.dropdown-content1 > a.droplinks',function(){
 	
 		
 });
+
+
+
+
+$(document).on('click','.repdeled',function(){
+	var vall=$(this).attr('id')
+	var noz=vall.slice(-1)
+	var comnoz=vall.slice(0,1)
+
+	console.log(noz)
+	console.log(comnoz)
+
+	if(qobject.comments[comnoz].replier[noz]==senduser){
+		
+	if(vall.slice(1,3)=='ed'){
+		$('#modal3').css('display','block')
+
+
+		$(document).on('click','#editbutton',function(){
+			// $('.postbutton').trigger('click')
+			// var n=
+			console.log($('#comno'+noz).text())
+			$('#'+comnoz+'repno'+noz).text($('input#newcomm').val())
+			console.log($('#comno'+noz).text())
+			qobject.comments[comnoz].reply[noz].value=$('input#newcomm').val()
+			// $('input#newcomm').val("")
+			$('#modal3').css('display','none');
+
+			console.log("aai")
+		console.log("rep edit")
+		})
+	}
+	else{
+		$('#'+comnoz+'reply'+noz).remove()
+		qobject.comments[comnoz].reply.splice(noz,1)
+		qobject.comments[comnoz].replier.splice(noz,1)
+
+		// Qlist.splice(Qlist.indexOf(qobject),1)
+		// qobject.comments.splice(noz,1)
+		qobject.comments[comnoz].replynos-=1;
+		$('span#comreply'+comnoz).text(qobject.comments[comnoz].replynos)	
+	}
+
+}
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$(document).on('click','.deled',function(){
+	var vall=$(this).attr('id')
+	var noz=vall.slice(-1)
+
+	if(qobject.comments[noz].poster==senduser.name){
+		
+	if(vall.slice(0,2)=='ed'){
+		$('#modal3').css('display','block')
+
+
+		$(document).on('click','#editbutton',function(){
+			// $('.postbutton').trigger('click')
+			// var n=
+			console.log($('#comno'+noz).text())
+			$('#comno'+noz).text($('input#newcomm').val())
+			console.log($('#comno'+noz).text())
+			qobject.comments[qobject.commentnos-1].value=$('input#newcomm').val()
+			// $('input#newcomm').val("")
+			$('#modal3').css('display','none');
+
+			console.log("aai")
+
+})
+		// qobject
+		// console.log("editable aai")
+		// qobject.comments[qobject.commentnos-1].value=$('input#newcomm').val()
+
+	}
+	else{
+		$('#commentos'+noz).remove()
+		qobject.comments.splice(noz,1)
+		Qlist.splice(Qlist.indexOf(qobject),1)
+		// qobject.comments.splice(noz,1)
+		qobject.commentnos-=1;
+		$('span#commentnos').text(qobject.commentnos)
+	}
+	}
+
+})
+
+
+// $(document).on('click','#editbutton',function(){
+// 	$('#modal3').css('display','none');
+// 			// $('.postbutton').trigger('click')
+// 			var n=
+// 			$('#comno'+)
+// 			qobject.comments[qobject.commentnos-1].value=$('input#newcomm').val()
+
+// 			console.log("aai")
+
+// })
+
+
+
+
+
+
+
+
+
 
 
 
@@ -689,8 +821,9 @@ $(document).on("click",'.postbutton',function(){
 	var adder=$('#alreadycomment');
 
 
-	adder.append($('<div id="commentos'+(qobject.commentnos-1)+'"'+'class="commentos"></div>').html('<div class="commain"><b><div style="font-size:15px;text-indent:5px;">'+qobject.comments[qobject.commentnos-1].poster+'</div></b>'+'<em><div style="font-size:14px;text-indent:12px;">'+qobject.comments[qobject.commentnos-1].value+'</div><em><div class="commentreactions"><ul style="display: inline;list-style: none;"><li class="clickme" id="colike'+(qobject.commentnos-1)+'"'+'><i style="font-size: 13px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span id="comlikenos'+(qobject.commentnos-1)+'"'+'>'+qobject.comments[qobject.commentnos-1].likenos+'</span></li><li class="clickme" id="cocomment'+(qobject.commentnos-1)+'"'+'><i style="font-size: 13px;color: #383838;margin-right: 3px;" class="fas fa-comments"></i><span id="comreply'+(qobject.commentnos-1)+'"'+'>'+qobject.comments[qobject.commentnos-1].replynos+'</span></li></ul></div></div>'))
+	adder.append($('<div id="commentos'+(qobject.commentnos-1)+'"'+'class="commentos"></div>').html('<div class="commain"><b><div style="font-size:15px;text-indent:5px;">'+qobject.comments[qobject.commentnos-1].poster+'</div></b>'+'<em><div style="font-size:14px;text-indent:12px;"><span  id="comno'+(qobject.commentnos-1)+'">'+qobject.comments[qobject.commentnos-1].value+'</span></div><em>   <li  id="edcom'+(qobject.commentnos-1)+'" class="deled"><i class="far fa-edit"></i><li class="deled" id="delcom'+(qobject.commentnos-1)+'"><i class="fas fa-trash-alt"></i></li>   <div class="commentreactions"><ul style="display: inline;list-style: none;"><li class="clickme" id="colike'+(qobject.commentnos-1)+'"'+'><i style="font-size: 13px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span id="comlikenos'+(qobject.commentnos-1)+'"'+'>'+qobject.comments[qobject.commentnos-1].likenos+'</span></li><li class="clickme" id="cocomment'+(qobject.commentnos-1)+'"'+'><i style="font-size: 13px;color: #383838;margin-right: 3px;" class="fas fa-comments"></i><span id="comreply'+(qobject.commentnos-1)+'"'+'>'+qobject.comments[qobject.commentnos-1].replynos+'</span></li></ul></div></div>'))
 						
+			// $('#commentos'+(qobject.commentnos-1)).append($('<li  id="edcom'+(qobject.commentnos-1)+'" class="deled"><i style="position: relative;top: 65px;left: 595px;" class="far fa-edit"></i><li class="deled" id="delcom'+(qobject.commentnos-1)+'"><i style="position: relative;top: 65px;left: 620px;" class="fas fa-trash-alt"></i></li>'))
 
 
 				$('#commentos'+(qobject.commentnos-1)).append($('<input class="comreplyinp" type="text" id="replyinput'+(qobject.commentnos-1)+'"'+'><input class="comreplies" id="replybutton'+(qobject.commentnos-1)+'" type="button" value="REPLY">'));
@@ -743,7 +876,9 @@ var vall=$(this).attr('id')
 	aid=vall.slice(-1)
 	console.log(aid)
 					
-					$('#replies'+aid).append($('<div id="reply'+qobject.comments[aid].replynos+'" class="comrep">'+'<i style="rotation:90deg" class="fas fa-share"></i><hr style="color:white"><div id="replyos'+qobject.comments[aid].replynos+'" '+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:15px;">'+senduser.name+'</div></b>'+'<em><div style="font-size:14px;text-indent:26px;">'+$('#replyinput'+aid).val()+'</div><em><li class="repclickme" id="replike'+qobject.comments[aid].replynos+'"'+'><i style="font-size: 12px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span style="font-size:11px;" id="comreplikenos'+qobject.comments[aid].replynos+'"'+'>'+qobject.comments[aid].likenos+'</span></li>'))
+					$('#replies'+aid).append($('<div id="'+aid+'reply'+qobject.comments[aid].replynos+'" class="comrep">'+'<i style="rotation:90deg" class="fas fa-share"></i><hr style="color:white"><div id="'+aid+'replyos'+qobject.comments[aid].replynos+'" '+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:15px;">'+senduser.name+'</div></b>'+'<em><div style="font-size:14px;text-indent:26px;"><span id="'+aid+'repno'+qobject.comments[aid].replynos+'">'+$('#replyinput'+aid).val()+'</span></div><em><li id="'+aid+'edrep'+qobject.comments[aid].replynos+'" class="repdeled"><i class="far fa-edit"></i> <li class="repdeled" id="'+aid+'delrep'+qobject.comments[aid].replynos+'"><i class="fas fa-trash-alt"></i></li>	<li class="repclickme" id="replike'+qobject.comments[aid].replynos+'"'+'><i style="font-size: 12px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span style="font-size:11px;" id="comreplikenos'+qobject.comments[aid].replynos+'"'+'>'+qobject.comments[aid].likenos+'</span></li>'))
+
+					// $('#'+aid+'reply'+qobject.comments[aid].replynos).append($('<li id="'+aid+'edrep'+qobject.comments[aid].replynos+'" class="repdeled"><i style="position: relative;top: 160px;left: 595px;" class="far fa-edit"></i><li class="repdeled" id="'+aid+'delrep'+qobject.comments[aid].replynos+'"><i style="position: relative;top: 160px;left: 620px;" class="fas fa-trash-alt"></i></li>'))
 
 
 						// console.log("agathai")
@@ -778,6 +913,9 @@ var vall=$(this).attr('id')
 
 
 
+$('#okbutt3').on("click",function(){
+		$('#modal3').css("display","none");
+})
 
 
 

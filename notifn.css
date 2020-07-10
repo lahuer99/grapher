@@ -9,7 +9,7 @@ html {
 }
 /* Optional: show position indicator in red */
 ::-webkit-scrollbar-thumb {
-    background: #FF0000;
+    /*background: #FF0000;*/
 }
 
 
@@ -333,6 +333,15 @@ textarea{
 	margin-right: 8px;
 }
 
+
+#newcomm{
+      margin-left: 10px;
+    border-radius: 5px;
+    height: 20px;
+}
+
+
+
 .postbutton{
 	width:62px;
 	height: 40px;
@@ -430,6 +439,49 @@ input[type=text]{
 	outline: none;
 }
 
+
+.deled{
+  list-style: none;
+     /* position: absolute;
+    top: 65px;
+    left: 595px;*/
+
+}
+
+
+.repdeled{
+  list-style: none;
+}
+
+
+#modal3{
+  display: none; 
+  position: fixed;
+  z-index: 1; 
+  left: 500px;
+  top: 190px;
+  width: 250px; 
+  height: 100px; 
+  /*overflow: auto; */
+  opacity: 0.99;
+  border:1px solid #525252;
+  border-radius: 29px;
+  background-color:silver;
+  padding-top: 60px;
+  /*#e0e0e0;  Fallback color */
+}
+
+#editbutton{
+  width:72px;
+  height: 25px;
+  background-color: steelblue;
+  color: white;
+  border-radius: 8px;
+  outline:none;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left:10px;
+}
 
 
 
