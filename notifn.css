@@ -102,7 +102,7 @@ li#notif2 a,li#notif1 a{
   opacity: 0.99;
   border:1px solid #525252;
   border-radius: 29px;
-  background-color:#787878;
+  background-color:#ececec;
   /*#e0e0e0;  Fallback color */
   /*background-color: rgba(0,0,0,0.4); /* Black w/ opacity */*/
 }
@@ -267,7 +267,7 @@ margin: 2px;
   /*border-radius: 8px;*/
   /*transition: linear 2s;*/
   border:1px solid #525252;
-  background-color: #787878;
+  background-color: #ececec;
   /*#cfcccc;*/
   opacity:0.99; /* Fallback color */
   /*background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
@@ -382,6 +382,7 @@ textarea{
 	border-width: thin;
 	height: 200px;
 	width:82%;
+  box-shadow: 2px 2px;
 	margin-left: 25px;
 	margin-top: 7px;
 	border-radius: 0px 9px 9px 9px;
@@ -442,17 +443,32 @@ input[type=text]{
 
 .deled{
   list-style: none;
+  display: inline;
      /* position: absolute;
     top: 65px;
     left: 595px;*/
 
 }
 
+li.deled{
+  width: 0px;
+  height: 0px;
+}
+
+/*i{
+  width:0px;
+}*/
+
 
 .repdeled{
+  display: inline;
   list-style: none;
 }
 
+li.repdeled{
+  width: 0px;
+  height: 0px;
+}
 
 #modal3{
   display: none; 
@@ -466,7 +482,7 @@ input[type=text]{
   opacity: 0.99;
   border:1px solid #525252;
   border-radius: 29px;
-  background-color:silver;
+  background-color:#ececec;
   padding-top: 60px;
   /*#e0e0e0;  Fallback color */
 }
