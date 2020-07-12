@@ -131,7 +131,7 @@ span#reactnos{
 #alreadycomment{
 	height: 225px;
 	overflow: auto;
-	display: none;
+	/*display: none;*/
 }
 
 li.clickme{

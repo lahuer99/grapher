@@ -83,17 +83,18 @@ $('#mover').on('input',function(){
 
 
 var Qlist=[];
-
+var C=0;
 class Query{
-	constructor(val,qsender,qreceiver){
+	constructor(val,qsender,qreceiver,idd){
+		this.id=idd;
 		this.value=val;
 		this.sender=qsender;
 		this.receiver=qreceiver;
-		this.likenos=0;
-		// this.likers=[]
-		this.commentnos=0;
+		// this.likenos=0;
+		this.likers=[];
+		// this.commentnos=0;
 		// this.comments={};
-		this.availcommentnos=[];
+		this.availcommentnos=0;
 
 		this.comments=[];
 
@@ -103,13 +104,14 @@ class Query{
 
 class Comment{
 	constructor(val,postt){
-		this.poster=postt.name;
+		this.poster=postt;
 		this.value=val;
-		this.likenos=0;
-		this.replynos=0;
-		this.replier=[];
-		this.reply=[];
-		this.replylikenos=[];
+		this.comlikers=[];
+		// this.replynos=0;
+		this.availreplynos=0;
+		// this.replier=[];
+		this.replies=[];
+		this.replylikers=[];
 		// this.rep
 		// this.commentnos
 	}
@@ -377,6 +379,9 @@ nott2.addClass("dropdown-content2")
 var usr1=new User('Rahul');
 var usr2;
 
+
+var senduser;
+var receiveuser;
 // senduser=usr1;
 // var receiveuser;
 
@@ -405,7 +410,7 @@ $('#closebutton1').on("click",function(){
 
 $('#okbutt').on("click",function(){
 	senduser=usr1;
-			receiveuser=usr2;
+	receiveuser=usr2;
 
 	for(var i=0;i<$('#contacts').val().length;i++){
 		// $('#modal').css("display","none")
@@ -413,10 +418,10 @@ $('#okbutt').on("click",function(){
 		if(!receiveuser){
 			usr2=new User($('#contacts').val()[i]);
 					// receiveuser=new User($('#contacts').val()[i])
-
 		}
 
-		query=new Query($('#modal textarea').val(),usr1,usr2)
+		query=new Query($('#modal textarea').val(),usr1,usr2,C)
+		C+=1;
 		usr1.sharequery(query)
 	}
 
@@ -439,12 +444,22 @@ $('#okbutt').on("click",function(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
  // > div.dropdown-content > div.droplinks
 
 
 var qobject;
-var senduser;
-var receiveuser;
+
 
 
 $(document).on("click",'.dropdown-content2 > a.droplinks',function(){
@@ -463,42 +478,42 @@ $(document).on("click",'.dropdown-content2 > a.droplinks',function(){
 			qobject=Qlist[nos]
 			$('#modal2').css("display","block")
 			$('#modal2 textarea').val(qobject.value)
-			$('span#likenos').text(qobject.likenos)
-			$('span#commentnos').text(qobject.commentnos)
+			$('span#likenos').text(qobject.likers.length)
+			$('span#commentnos').text(qobject.comments.lengths)
 			// $('#reactdisp').text('React')
-			$('#reactdisp').text(qobject.sticknos)
+			// $('#reactdisp').text(qobject.sticknos)
 			// $('#alreadycomment').empty();
 			for(var i=0;i<qobject.comments.length;i++){
 
-				if(qobject.comments[i]!=null){
+				// if(qobject.comments[i]!=null){
 
 				var addr=$('#alreadycomment')
 				// addr.append
-				addr.append($('<div id="commentos'+i+'"'+'class="commentos"></div>').html('<div class="commain"><b><div style="font-size:15px;text-indent:5px;font-family: "OpenSansCondensed-Light";">'+qobject.comments[i].poster+' <li style="position: relative;right:-190px;" id="edcom'+i+'" class="deled"><i  class="far fa-edit"></i><li style="position: relative;right: -188px;" class="deled" id="delcom'+i+'"><i  class="fas fa-trash-alt"></i></li></div></b>'+'<em><div style="font-size:14px;text-indent:12px;	font-family: "OpenSansCondensed-LightItalic";" id="comno'+i+'"><span  id="comno'+i+'">'+qobject.comments[i].value+'</span>     </div><em>    <div class="commentreactions"><ul style="display: inline;list-style: none;"><li class="clickme" id="colike'+i+'"'+'><i style="font-size: 13px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span id="comlikenos'+i+'"'+'>'+qobject.comments[i].likenos+'</span></li><li class="clickme" id="cocomment'+i+'"'+'><i style="font-size: 13px;color: #383838;margin-right: 3px;" class="fas fa-comments"></i><span id="comreply'+i+'"'+'>'+qobject.comments[i].replynos+'</span></li></ul></div>'))
+				addr.append($('<div id="commentos'+i+'"'+'class="commentos"></div>').html('<div class="commain"><b><div style="font-size:15px;text-indent:5px;font-family: "OpenSansCondensed-Light";">'+qobject.comments[i].poster.name+' <li style="position: relative;right:-190px;" id="edcom'+i+'" class="deled"><i  class="far fa-edit"></i><li style="position: relative;right: -188px;" class="deled" id="delcom'+i+'"><i  class="fas fa-trash-alt"></i></li></div></b>'+'<em><div style="font-size:14px;text-indent:12px;	font-family: "OpenSansCondensed-LightItalic";" id="comno'+i+'"><span  id="comno'+i+'">'+qobject.comments[i].value+'</span>     </div><em>    <div class="commentreactions"><ul style="display: inline;list-style: none;"><li class="clickme" id="colike'+i+'"'+'><i style="font-size: 13px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span id="comlikenos'+i+'"'+'>'+qobject.comments[i].comlikers.length+'</span></li><li class="clickme" id="cocomment'+i+'"'+'><i style="font-size: 13px;color: #383838;margin-right: 3px;" class="fas fa-comments"></i><span id="comreply'+i+'"'+'>'+qobject.comments[i].replies.length+'</span></li></ul></div>'))
 					// text(qobject.comments[i].poster+" : "+qobject.comments[i].value))
 
 					// $('#commentos'+i).append($('<li id="edcom'+i+'" class="deled"><i style="position: relative;bottom: 56px;left: 239px;" class="far fa-edit"></i><li class="deled" id="delcom'+i+'"><i style="position: relative;bottom: 74px;left: 260px;" class="fas fa-trash-alt"></i></li>'))
 
 
-					$('#commentos'+i).append($('<input class="comreplyinp" type="text" id="replyinput'+i+'"'+'><input class="comreplies" id="replybutton'+i+'" type="button" value="REPLY">'));
-
-
 					$('#commentos'+i).append($('<div class="replymain" id="replies'+i+'">'));
 
 
-				for(var j=0;j<qobject.comments[i].reply.length;j++){
-
-					if(qobject.comments[i].reply[j]!=null){
+					$('#commentos'+i).append($('<input class="comreplyinp" type="text" id="replyinput'+i+'"'+'><input class="comreplies" id="replybutton'+i+'" type="button" value="REPLY">'));
 
 
-					$('#replies'+i).append($('<div id="'+i+'reply'+j+'" class="comrep">'+'<i style="rotation:90deg" class="fas fa-share"></i><hr style="color:white"><div id="'+i+'replyos'+j+'" '+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:15px;">'+qobject.comments[i].replier[j].name+'<li style="position: relative;right: -113px;" id="'+i+'edrep'+j+'" class="repdeled"><i  class="far fa-edit"></i><li style="position: relative;right: -100px;    margin-left: 7px;" class="repdeled" id="'+i+'delrep'+j+'"><i  class="fas fa-trash-alt"></i></li></div></b>'+'<em><div style="font-size:14px;text-indent:26px;"><span id="'+i+'repno'+j+'">'+qobject.comments[i].reply[j]+'</span></div></em>'))
+				for(var j=0;j<qobject.comments[i].replies.length;j++){
+
+					// if(qobject.comments[i].replies[j]!=null){
+
+
+					$('#replies'+i).append($('<div id="'+i+'reply'+j+'" class="comrep">'+'<i style="rotation:90deg" class="fas fa-share"></i><hr style="color:white"><div id="'+i+'replyos'+j+'" '+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:15px;">'+qobject.comments[i].replies[j][1].name+'<li style="position: relative;right: -113px;" id="'+i+'edrep'+j+'" class="repdeled"><i  class="far fa-edit"></i><li style="position: relative;right: -100px;    margin-left: 7px;" class="repdeled" id="'+i+'delrep'+j+'"><i  class="fas fa-trash-alt"></i></li></div></b>'+'<em><div style="font-size:14px;text-indent:26px;"><span id="'+i+'repno'+j+'">'+qobject.comments[i].replies[j][0]+'</span></div></em>'))
 					
 
-					$('#'+i+'reply'+j).append($('<li class="repclickme" id="'+i+'replike'+j+'"'+'><i style="font-size: 12px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span style="font-size:11px" id="'+i+'comreplikenos'+j+'"'+'>'+qobject.comments[i].replylikenos[j]+'</span></li>'))
+					$('#'+i+'reply'+j).append($('<li class="repclickme" id="'+i+'replike'+j+'"'+'><i style="font-size: 12px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span style="font-size:11px" id="'+i+'comreplikenos'+j+'"'+'>'+qobject.comments[i].replies[j].length+'</span></li>'))
 
 					// $('#'+i+'reply'+j).append($('<li id="'+i+'edrep'+j+'" class="repdeled"><i style="position: relative;bottom:45px;left: 185px;" class="far fa-edit"></i><li class="repdeled" id="'+i+'delrep'+j+'"><i style="position: relative;bottom:62px;left: 206px;" class="fas fa-trash-alt"></i></li>'))
-				}
-			}
+				// }
+			// }
 
 			}
 		}
@@ -545,37 +560,36 @@ $(document).on("click",'.dropdown-content1 > a.droplinks',function(){
 		// $('#alreadycomment').empty();
 			for(var i=0;i<qobject.comments.length;i++){
 
-				if(qobject.comments[i]!=null){
+				// if(qobject.comments[i]!=null){
 
 
 				var addr=$('#alreadycomment')
-				addr.append($('<div id="commentos'+i+'"'+'class="commentos"></div>').html('<div class="commain"><b><div style="font-size:15px;text-indent:5px;	font-family: "OpenSansCondensed-Light";">'+qobject.comments[i].poster+'<li style="position: relative;right: -190px;" id="edcom'+i+'" class="deled"><i  class="far fa-edit"></i><li style="position: relative;right: -188px;" class="deled" id="delcom'+i+'"><i  class="fas fa-trash-alt"></i></li></div></b>'+'<em><div style="font-size:14px;text-indent:12px;	font-family: "OpenSansCondensed-LightItalic";"><span  id="comno'+i+'">'+qobject.comments[i].value+'</span>      </div><em>      <div class="commentreactions"><ul style="display: inline;list-style: none;"><li class="clickme" id="colike'+i+'"'+'><i style="font-size: 13px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span id="comlikenos'+i+'"'+'>'+qobject.comments[i].likenos+'</span></li><li class="clickme" id="cocomment'+i+'"'+'><i style="font-size: 13px;color: #383838;margin-right: 3px;" class="fas fa-comments"></i><span id="comreply'+i+'"'+'>'+qobject.comments[i].replynos+'</span></li></ul></div></div>'))
+				addr.append($('<div id="commentos'+i+'"'+'class="commentos"></div>').html('<div class="commain"><b><div style="font-size:15px;text-indent:5px;	font-family: "OpenSansCondensed-Light";">'+qobject.comments[i].poster+'<li style="position: relative;right: -190px;" id="edcom'+i+'" class="deled"><i  class="far fa-edit"></i><li style="position: relative;right: -188px;" class="deled" id="delcom'+i+'"><i  class="fas fa-trash-alt"></i></li></div></b>'+'<em><div style="font-size:14px;text-indent:12px;	font-family: "OpenSansCondensed-LightItalic";"><span  id="comno'+i+'">'+qobject.comments[i].value+'</span>      </div><em>      <div class="commentreactions"><ul style="display: inline;list-style: none;"><li class="clickme" id="colike'+i+'"'+'><i style="font-size: 13px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span id="comlikenos'+i+'"'+'>'+qobject.comments[i].likenos+'</span></li><li class="clickme" id="cocomment'+i+'"'+'><i style="font-size: 13px;color: #383838;margin-right: 3px;" class="fas fa-comments"></i><span id="comreply'+i+'"'+'>'+qobject.comments[i].replies.length+'</span></li></ul></div></div>'))
 
 
 					// $('#commentos'+i).append($('<li  id="edcom'+i+'" class="deled"><i style="position: relative;bottom: 56px;left: 239px;" class="far fa-edit"></i><li class="deled" id="delcom'+i+'"><i style="position: relative;bottom: 74px;left: 260px;" class="fas fa-trash-alt"></i></li>'))
 
 
-
-					$('#commentos'+i).append($('<input class="comreplyinp" type="text" id="replyinput'+i+'"'+'><input class="comreplies" id="replybutton'+i+'" type="button" value="REPLY">'));
-
-
 						
 				$('#commentos'+i).append($('<div class="replymain" id="replies'+i+'">'));
 
-				for(var j=0;j<qobject.comments[i].reply.length;j++){
-
-					if(qobject.comments[i].reply[j]!=null){
+				$('#commentos'+i).append($('<input class="comreplyinp" type="text" id="replyinput'+i+'"'+'><input class="comreplies" id="replybutton'+i+'" type="button" value="REPLY">'));
 
 
-					$('#replies'+i).append($('<div id="'+i+'reply'+j+'" class="comrep">'+'<i style="rotation:90deg" class="fas fa-share"></i><hr style="color:white"><div id="'+i+'replyos'+j+'" '+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:15px;">'+qobject.comments[i].replier[j].name+'<li style="position: relative;right: -113px;" id="'+i+'edrep'+j+'" class="repdeled"><i  class="far fa-edit"></i><li style="position: relative;right: -100px;" class="repdeled" id="'+i+'delrep'+j+'"><i  class="fas fa-trash-alt"></i></li></div></b>'+'<em><div style="font-size:14px;text-indent:26px;"><span id="'+i+'repno'+j+'">'+qobject.comments[i].reply[j]+'</span></div></em>'))
+				for(var j=0;j<qobject.comments[i].replies.length;j++){
+
+					// if(qobject.comments[i].reply[j]!=null){
 
 
-					$('#'+i+'reply'+j).append($('<li class="repclickme" id="'+i+'replike'+j+'"'+'><i style="font-size: 12px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span style="font-size:11px" id="comreplikenos'+j+'"'+'>'+qobject.comments[i].replylikenos[j]+'</span></li>'))
+					$('#replies'+i).append($('<div id="'+i+'reply'+j+'" class="comrep">'+'<i style="rotation:90deg" class="fas fa-share"></i><hr style="color:white"><div id="'+i+'replyos'+j+'" '+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:15px;">'+qobject.comments[i].replies[j][1].name+'<li style="position: relative;right: -113px;" id="'+i+'edrep'+j+'" class="repdeled"><i  class="far fa-edit"></i><li style="position: relative;right: -100px;" class="repdeled" id="'+i+'delrep'+j+'"><i  class="fas fa-trash-alt"></i></li></div></b>'+'<em><div style="font-size:14px;text-indent:26px;"><span id="'+i+'repno'+j+'">'+qobject.comments[i].replies[j][0]+'</span></div></em>'))
+
+
+					$('#'+i+'reply'+j).append($('<li class="repclickme" id="'+i+'replike'+j+'"'+'><i style="font-size: 12px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span style="font-size:11px" id="comreplikenos'+j+'"'+'>'+qobject.comments[i].replies[j].length+'</span></li>'))
 
 					// $('#'+i+'reply'+j).append($('<li id="'+i+'edrep'+j+'" class="repdeled"><i style="position: relative;bottom:45px;left: 185px;" class="far fa-edit"></i><li class="repdeled" id="'+i+'delrep'+j+'"><i style="position: relative;bottom:62px;left: 206px;" class="fas fa-trash-alt"></i></li>'))
 
-				}
-			}
+				// }
+			// }
 
 
 
@@ -596,243 +610,9 @@ $(document).on("click",'.dropdown-content1 > a.droplinks',function(){
 
 
 
-$(document).on('click','.repdeled',function(){
-	var vall=$(this).attr('id')
-	var noz=vall.slice(-1)
-	var comnoz=vall.slice(0,1)
 
-	console.log(noz)
-	console.log(comnoz)
 
-	if(qobject.comments[comnoz].replier[noz]==senduser){
-		
-	if(vall.slice(1,3)=='ed'){
-		$('#modal3').css('display','block')
 
-
-		$(document).on('click','#editbutton',function(){
-			// $('.postbutton').trigger('click')
-			// var n=
-			if(vall.slice(1,3)=='ed'){
-			// console.log($('#comno'+noz).text())
-			$('#'+comnoz+'repno'+noz).text($('input#newcomm').val())
-			// console.log($('#comno'+noz).text())
-			qobject.comments[comnoz].reply[noz].value=$('input#newcomm').val()
-			// $('input#newcomm').val("")
-			$('#modal3').css('display','none');
-
-		// 	console.log("aai")
-		// console.log("rep edit")
-	}
-		})
-	}
-	else{
-		$('#'+comnoz+'reply'+noz).remove()
-		qobject.comments[comnoz].reply[noz]=null;
-		qobject.comments[comnoz].replier[noz]=null;
-
-		// Qlist.splice(Qlist.indexOf(qobject),1)
-		// qobject.comments.splice(noz,1)
-		qobject.comments[comnoz].replynos-=1;
-		$('span#comreply'+comnoz).text(qobject.comments[comnoz].replynos)	
-	}
-
-}
-
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-$(document).on('click','.deled',function(){
-	var vall=$(this).attr('id')
-	var noz=vall.slice(-1)
-
-	if(qobject.comments[noz].poster==senduser.name){
-		
-	if(vall.slice(0,2)=='ed'){
-		$('#modal3').css('display','block')
-
-
-		$(document).on('click','#editbutton',function(){
-			// $('.postbutton').trigger('click')
-			// var n=
-			if(vall.slice(0,2)=='ed'){
-			// console.log($('#comno'+noz).text())
-			$('#comno'+noz).text($('input#newcomm').val())
-			// console.log($('#comno'+noz).text())
-			qobject.comments[noz].value=$('input#newcomm').val()
-			// $('input#newcomm').val("")
-			$('#modal3').css('display','none');
-
-			// console.log("aai")
-}
-})
-		// qobject
-		// console.log("editable aai")
-		// qobject.comments[qobject.commentnos-1].value=$('input#newcomm').val()
-
-	}
-	else{
-		$('#commentos'+noz).remove()
-		// qobject.availcommentnos[noz]=false;
-		qobject.comments[noz]=null;
-		// Qlist[Qlist.indexOf(qobject)]=null;
-		// Qlist.splice(Qlist.indexOf(qobject),1)
-		// qobject.comments.splice(noz,1)
-		qobject.commentnos-=1;
-		$('span#commentnos').text(qobject.commentnos)
-	}
-	}
-
-})
-
-
-// $(document).on('click','#editbutton',function(){
-// 	$('#modal3').css('display','none');
-// 			// $('.postbutton').trigger('click')
-// 			var n=
-// 			$('#comno'+)
-// 			qobject.comments[qobject.commentnos-1].value=$('input#newcomm').val()
-
-// 			console.log("aai")
-
-// })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-var noss;
-$(document).on('click','li.clickme',function(){
-// $('li.clickme').on('click',function(){
-	noss=0;
-	var vall=$(this).attr('id')
-	noss=vall.slice(-1)
-
-	var qcomment=qobject.comments[noss]
-	console.log(qcomment)
-
-	if(vall.slice(0,3)=='col')
-	{
-	// if(qcomment.likenos==0){
-				// console.log('times')
-				qcomment.likenos+=1;
-				$('span#comlikenos'+noss).text(qcomment.likenos)
-				// $()
-				senduser.likecomment(qobject)
-			// }
-		}
-	else{
-
-
-			// if(qcomment.replynos==0){
-				// console.log('times')
-			
-				// console.log(qcomment.replynos)
-
-				// $('#commentos'+noss).append($('<input type="text" id="replyinput"><input id="replybutton" type="button" value="REPLY">'));
-
-
-				// $('#commentos'+noss).append($('<div id="replies'+qcomment.replynos+'">'));
-
-
-
-
-
-
-				//to show replies
-
-
-
-
-
-
-
-	// $('#replybutton').on('click',function(){
-
-					
-	// 				$('#replies'+qcomment.replynos).append($('<div id="reply'+qcomment.replynos+'" class="comrep">'+'<i style="rotation:90deg" class="fas fa-share"></i><hr style="color:white"><div id="replyos'+qcomment.replynos+'" '+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:35px;">'+senduser.name+'</div></b>'+'<em><div style="font-size:14px;text-indent:46px;">'+$('#replyinput').val()+'</div><em>'))
-
-	// 					// console.log("agathai")
-	// 						// console.log("ivdai")
-	// 				qcomment.replynos+=1;
-	// 			$('span#comreply'+noss).text(qcomment.replynos)
-	// 			qcomment.replier.push(senduser)
-	// 			qcomment.reply.push($('#replyinput').val())
-				
-	// 			senduser.replycomment(qobject)
-
-	// 			$('#replyinput').remove()
-	// 			$('#replybutton').remove();
-	// 			});
-
-			
-			// }
-
-		}
-});
-
-
-$('#lilike').on("click",function(){
-		// console.log(qobject.likenos)
-			if(qobject.likenos==0){
-				// console.log('times')
-				qobject.likenos+=1;
-				$('span#likenos').text(qobject.likenos)
-
-				senduser.like(qobject)
-			}
-});
-
-
-
-
-
-
-
-$(document).on("click",'#licomment',function(){
-
-	$('#alreadycomment').css("display","block")
-
-	// console.log("keyari")
-	// var adder=$('.commentsection')
-	// adder.append($('<input type="text">').attr('id','newcup'))
-	// var newcomment=$('<input type="text">').appendTo($('.commentsection'));
-	// adder.append($('<input type="button" class="postbutton" value="POST">'))
-	// var newcommentbutton=$('<input type="button" class="postbutton">').appendTo($('.commentsection'));
-	// newcomment.attr('id','newcup')
-	// newcomment.addClass("dropdown-content2")
-
-	
-})
 
 
 $(document).on("click",'.postbutton',function(){
@@ -842,23 +622,25 @@ $(document).on("click",'.postbutton',function(){
 
 	qobject.comments.push(comment)
 
-	qobject.commentnos+=1;
+	// qobject.commentnos+=1;
 	// qobject.availcommentnos.push(true);
 
-	$('span#commentnos').text(qobject.commentnos)
+	$('span#commentnos').text(qobject.comments.length)
 
 	var adder=$('#alreadycomment');
+	// var 
 
-
-	adder.append($('<div id="commentos'+(qobject.comments.length-1)+'"'+'class="commentos"></div>').html('<div class="commain"><b><div style="font-size:15px;text-indent:5px;display:inline">'+qobject.comments[qobject.comments.length-1].poster+'<li style="position: relative;right: -200px;" id="edcom'+(qobject.comments.length-1)+'" class="deled" ><i  class="far fa-edit"></i><li style="position: relative;right: -200px;" class="deled" id="delcom'+(qobject.comments.length-1)+'"><i  class="fas fa-trash-alt"></i></li> </div></b>'+'<em><div style="font-size:14px;text-indent:12px;"><span  id="comno'+(qobject.comments.length-1)+'">'+qobject.comments[qobject.comments.length-1].value+'</span>    </div><em>     <div class="commentreactions"><ul style="display: inline;list-style: none;"><li class="clickme" id="colike'+(qobject.comments.length-1)+'"'+'><i style="font-size: 13px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span id="comlikenos'+(qobject.comments.length-1)+'"'+'>'+qobject.comments[qobject.comments.length-1].likenos+'</span></li><li class="clickme" id="cocomment'+(qobject.comments.length-1)+'"'+'><i style="font-size: 13px;color: #383838;margin-right: 3px;" class="fas fa-comments"></i><span id="comreply'+(qobject.comments.length-1)+'"'+'>'+qobject.comments[qobject.comments.length-1].replynos+'</span></li></ul></div></div>'))
+	adder.append($('<div id="commentos'+qobject.availcommentnos+'"'+'class="commentos"></div>').html('<div class="commain"><b><div style="font-size:15px;text-indent:5px;display:inline">'+qobject.comments[qobject.comments.length-1].poster.name+'<li style="position: relative;right: -200px;" id="edcom'+qobject.availcommentnos+'" class="deled" ><i  class="far fa-edit"></i><li style="position: relative;right: -200px;" class="deled" id="delcom'+qobject.availcommentnos+'"><i  class="fas fa-trash-alt"></i></li> </div></b>'+'<em><div style="font-size:14px;text-indent:12px;"><span  id="comno'+qobject.availcommentnos+'">'+qobject.comments[qobject.comments.length-1].value+'</span>    </div><em>     <div class="commentreactions"><ul style="display: inline;list-style: none;"><li class="clickme" id="colike'+qobject.availcommentnos+'"'+'><i style="font-size: 13px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span id="comlikenos'+qobject.availcommentnos+'"'+'>'+qobject.comments[qobject.comments.length-1].comlikers.length+'</span></li><li class="clickme" id="cocomment'+qobject.availcommentnos+'"'+'><i style="font-size: 13px;color: #383838;margin-right: 3px;" class="fas fa-comments"></i><span id="comreply'+qobject.availcommentnos+'"'+'>'+qobject.comments[qobject.comments.length-1].replies.length+'</span></li></ul></div></div>'))
 						
 			// $('#commentos'+(qobject.commentnos-1)).append($('<li  id="edcom'+(qobject.commentnos-1)+'" class="deled"><i style="position: relative;bottom: 56px;left: 239px;" class="far fa-edit"></i><li class="deled" id="delcom'+(qobject.commentnos-1)+'"><i style="position: relative;bottom: 74px;left: 260px;" class="fas fa-trash-alt"></i></li>'))
 
 
-				$('#commentos'+(qobject.comments.length-1)).append($('<input class="comreplyinp" type="text" id="replyinput'+(qobject.comments.length-1)+'"'+'><input class="comreplies" id="replybutton'+(qobject.comments.length-1)+'" type="button" value="REPLY">'));
+				
 
-				$('#commentos'+(qobject.comments.length-1)).append($('<div class="replymain" id="replies'+(qobject.comments.length-1)+'">'));
+				$('#commentos'+qobject.availcommentnos).append($('<div class="replymain" id="replies'+qobject.availcommentnos+'">'));
 
+
+				$('#commentos'+qobject.availcommentnos).append($('<input class="comreplyinp" type="text" id="replyinput'+qobject.availcommentnos+'"'+'><input class="comreplies" id="replybutton'+qobject.availcommentnos+'" type="button" value="REPLY">'));
 				// $('#commentos'+noss).append($('<div id="replies'+qcomment.replynos+'">'));
 
 
@@ -886,13 +668,14 @@ $(document).on("click",'.postbutton',function(){
 
 	senduser.comment(qobject)
 
-	$('#alreadycomment').css("display","block")
+	// $('#alreadycomment').css("display","block")
 	$('#newcup').val("");
 
 	 $('#alreadycomment').animate({
-        scrollTop: $('#commentos'+(qobject.comments.length-1)).offset().top
+        scrollTop: $('#commentos'+qobject.availcommentnos).offset().top
     }, 1000);
 
+	 qobject.availcommentnos+=1;
 
 	// $('.postbutton').remove();
 
@@ -904,14 +687,17 @@ $(document).on("click",'.postbutton',function(){
 
 
 
+
+
+
 $(document).on("click",".comreplies",function(){
 // $('#replybutton').on('click',function(){
 
 var vall=$(this).attr('id')
-	aid=vall.slice(-1)
-	console.log(aid)
+aid=vall.slice(-1)
+	// console.log(aid)
 					
-					$('#replies'+aid).append($('<div id="'+aid+'reply'+qobject.comments[aid].reply.length+'" class="comrep">'+'<i style="rotation:90deg" class="fas fa-share"></i><hr style="color:white"><div id="'+aid+'replyos'+qobject.comments[aid].reply.length+'" '+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:15px;display:inline">'+senduser.name+'</div></b>'+'<em><div style="font-size:14px;text-indent:26px;"><span id="'+aid+'repno'+qobject.comments[aid].reply.length+'">'+$('#replyinput'+aid).val()+'</span>  <li style="position: relative;bottom: 14px;right:-103px;" id="'+aid+'edrep'+qobject.comments[aid].reply.length+'" class="repdeled"><i style="  width:0px;"  class="far fa-edit"></i><li style="position: relative;bottom:14px;right:-80px;" class="repdeled" id="'+aid+'delrep'+qobject.comments[aid].reply.length+'"><i style="  width:0px;" class="fas fa-trash-alt"></i></li>   </div><em>	<li class="repclickme" id="'+aid+'replike'+qobject.comments[aid].reply.length+'"'+'><i style="font-size: 12px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span style="font-size:11px;" id="comreplikenos'+qobject.comments[aid].reply.length+'"'+'>'+qobject.comments[aid].reply.length+'</span></li>'))
+					$('#replies'+aid).append($('<div id="'+aid+'reply'+qobject.comments[aid].availreplynos+'" class="comrep">'+'<i style="rotation:90deg" class="fas fa-share"></i><hr style="color:white"><div id="'+aid+'replyos'+qobject.comments[aid].availreplynos+'" '+'class="commentos"></div>').html('<b><div style="font-size:15px;text-indent:15px;display:inline">'+senduser.name+'</div></b>'+'<em><div style="font-size:14px;text-indent:26px;"><span id="'+aid+'repno'+qobject.comments[aid].availreplynos+'">'+$('#replyinput'+aid).val()+'</span>  <li style="position: relative;bottom: 14px;right:-103px;" id="'+aid+'edrep'+qobject.comments[aid].availreplynos+'" class="repdeled"><i style="  width:0px;"  class="far fa-edit"></i><li style="position: relative;bottom:14px;right:-80px;" class="repdeled" id="'+aid+'delrep'+qobject.comments[aid].availreplynos+'"><i style="  width:0px;" class="fas fa-trash-alt"></i></li>   </div><em>	<li class="repclickme" id="'+aid+'replike'+qobject.comments[aid].availreplynos+'"'+'><i style="font-size: 12px; color: #383838; margin-right: 3px;" class="far fa-thumbs-up"></i><span style="font-size:11px;" id="comreplikenos'+qobject.comments[aid].availreplynos+'"'+'>'+qobject.comments[aid].availreplynos+'</span></li>'))
 
 					// $('#'+aid+'reply'+qobject.comments[aid].replynos).append($('<li id="'+aid+'edrep'+qobject.comments[aid].replynos+'" class="repdeled"><i style="position: relative;bottom: 45px;left: 185px;" class="far fa-edit"></i><li class="repdeled" id="'+aid+'delrep'+qobject.comments[aid].replynos+'"><i style="position: relative;bottom:62px;left: 206px;" class="fas fa-trash-alt"></i></li>'))
 
@@ -919,25 +705,239 @@ var vall=$(this).attr('id')
 						// console.log("agathai")
 							// console.log("ivdai")
 							$('#alreadycomment').animate({
-      			  scrollTop: $('#'+aid+'reply'+(qobject.comments[aid].reply.length)).offset().top
+      			  scrollTop: $('#'+aid+'reply'+(qobject.comments[aid].availreplynos)).offset().top
   				  }, 1000);
 
-					qobject.comments[aid].replynos+=1;
-				$('span#comreply'+(aid)).text(qobject.comments[aid].replynos)
-				qobject.comments[aid].replier.push(senduser)
-				qobject.comments[aid].reply.push($('#replyinput'+aid).val())
-				qobject.comments[aid].replylikenos.push(0)
+					// qobject.comments[aid].repls+=1;
+	
+				// qobject.comments[aid].replier.push(senduser)
+				qobject.comments[aid].replies.push([$('#replyinput'+aid).val(),senduser])
+				qobject.comments[aid].replylikers.push([])
+
+				$('span#comreply'+(aid)).text(qobject.comments[aid].replies.length)
+				// qobject.comments[aid].replylikenos.push(0)
 
 				senduser.replycomment(qobject)
 
 				$('#replyinput'+aid).val("")
 
-				 
+				qobject.comments[aid].availreplynos+=1;
 				// $('#replybutton').remove();
 				});
 
 
-//reply like
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+$(document).on('click','.repdeled',function(){
+	var vall=$(this).attr('id')
+	var noz=vall.slice(-1)
+	var comnoz=vall.slice(0,1)
+
+
+if(comnoz>=qobject.comments.length){
+	comnoz=qobject.comments.length-1
+}
+
+if(noz>=qobject.comments[comnoz].replies.length){
+	noz=qobject.comments[comnoz].replies.length-1
+}
+
+
+	// console.log(noz)
+	// console.log(comnoz)
+
+	if(qobject.comments[comnoz].replies[noz][1]==senduser){
+		
+	if(vall.slice(1,3)=='ed'){
+		$('#modal3').css('display','block')
+
+
+		$(document).on('click','#editbutton',function(){
+			// $('.postbutton').trigger('click')
+			// var n=
+			if(vall.slice(1,3)=='ed'){
+			// console.log($('#comno'+noz).text())
+			$('#'+comnoz+'repno'+noz).text($('input#newcomm').val())
+			// console.log($('#comno'+noz).text())
+			qobject.comments[comnoz].replies[noz][0]=$('input#newcomm').val()
+			// $('input#newcomm').val("")
+			$('#modal3').css('display','none');
+
+		// 	console.log("aai")
+		// console.log("rep edit")
+	}
+		})
+	}
+	else{
+		$('#'+comnoz+'reply'+noz).remove()
+		qobject.comments[comnoz].replies.splice(noz,1);
+		qobject.comments[comnoz].replylikers.splice(noz,1);
+
+		// Qlist.splice(Qlist.indexOf(qobject),1)
+		// qobject.comments.splice(noz,1)
+		// qobject.comments[comnoz].replynos-=1;
+		$('span#comreply'+comnoz).text(qobject.comments[comnoz].replies.length)	
+	}
+
+}
+
+})
+
+
+
+
+
+
+
+
+
+$(document).on('click','.deled',function(){
+	var vall=$(this).attr('id')
+	var noz=vall.slice(-1)
+
+	if(noz>=qobject.comments.length){
+		noz=qobject.comments.length-1
+	}
+
+
+	if(qobject.comments[noz].poster==senduser){
+		
+	if(vall.slice(0,2)=='ed'){
+		$('#modal3').css('display','block')
+
+
+		$(document).on('click','#editbutton',function(){
+			// $('.postbutton').trigger('click')
+			// var n=
+			if(vall.slice(0,2)=='ed'){
+			// console.log($('#comno'+noz).text())
+			$('#comno'+noz).text($('input#newcomm').val())
+			// console.log($('#comno'+noz).text())
+			qobject.comments[noz].value=$('input#newcomm').val()
+			// $('input#newcomm').val("")
+			$('#modal3').css('display','none');
+
+			// console.log("aai")
+}
+})
+		// qobject
+		// console.log("editable aai")
+		// qobject.comments[qobject.commentnos-1].value=$('input#newcomm').val()
+
+	}
+	else{
+		$('#commentos'+noz).remove()
+		// qobject.availcommentnos[noz]=false;
+		qobject.comments.splice(noz,1);
+		// Qlist[Qlist.indexOf(qobject)]=null;
+		// Qlist.splice(Qlist.indexOf(qobject),1)
+		// qobject.comments.splice(noz,1)
+		// qobject.commentnos-=1;
+		$('span#commentnos').text(qobject.comments.length)
+	}
+	}
+
+})
+
+
+// $(document).on('click','#editbutton',function(){
+// 	$('#modal3').css('display','none');
+// 			// $('.postbutton').trigger('click')
+// 			var n=
+// 			$('#comno'+)
+// 			qobject.comments[qobject.commentnos-1].value=$('input#newcomm').val()
+
+// 			console.log("aai")
+
+// })
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+// var noss;
+$(document).on('click','li.clickme',function(){
+// $('li.clickme').on('click',function(){
+	// noss=0;
+	var vall=$(this).attr('id')
+	noss=vall.slice(-1)
+
+	if(noss>=qobject.comments.length){
+		noss=qobject.comments.length-1
+	}
+
+	var qcomment=qobject.comments[noss]
+	// console.log(qcomment)
+
+
+
+	if(vall.slice(0,3)=='col')
+	{
+	// if(qcomment.likenos==0){
+				// console.log('times')
+				if(qcomment.comlikers.includes(senduser)){
+					qcomment.comlikers.splice(qcomment.comlikers.indexOf(senduser),1)
+				}
+				else{
+					qcomment.comlikers.push(senduser)
+				}
+				// qcomment.likenos+=1;
+				$('span#comlikenos'+noss).text(qcomment.comlikers.length)
+				// $()
+				senduser.likecomment(qobject)
+			// }
+		}
+	else{
+
+		}
+});
+
+
+
+
+$('#lilike').on("click",function(){
+		// console.log(qobject.likenos)
+		if(qobject.likers.includes(senduser)){
+			qobject.likers.splice(qobject.likers.indexOf(senduser),1)
+		}
+		else{
+			qobject.likers.push(senduser)
+		}
+			// if(qobject.likenos==0){
+				// console.log('times')
+				// qobject.likenos+=1;
+				$('span#likenos').text(qobject.likers.length)
+
+				senduser.like(qobject)
+			// }
+});
+
+
+
 
 $(document).on("click",'.repclickme',function(){
 
@@ -945,18 +945,32 @@ var vall=$(this).attr('id')
 var noo=vall.slice(-1)
 var noo1=vall.slice(0,1)
 	// qobject.comments[noo1].reply[noo].likenos+=1;
-	qobject.comments[noo1].replylikenos[noo]+=1;
+
+if(noo1>=qobject.comments.length){
+	noo1=qobject.comments.length-1
+}
+
+if(noo>=qobject.comments[noo1].replies.length){
+	noo=qobject.comments[noo1].replies.length-1
+}
+
+if(qobject.comments[noo1].replylikers[noo].includes(senduser)){
+	qobject.comments[noo1].replylikers[noo].splice(senduser,1)
+}
+else{
+	qobject.comments[noo1].replylikers[noo].push(senduser)
+}
+	
 
 		// $('span#comreplikenos'+).
-				$('span#comreplikenos'+noo).text('1')
-				if(qobject.comments[noo1].replylikenos[noo]==0){
-									senduser.likecomment(qobject)
+$('span#comreplikenos'+noo).text(qobject.comments[noo1].replylikers[noo].length)
+				// if(qobject.comments[noo1].replylikenos[noo]==0){
+senduser.likecomment(qobject)
 
-				}
+				// }
+// }
+// }
 })
-
-
-
 
 
 
@@ -966,18 +980,16 @@ $('#okbutt3').on("click",function(){
 
 
 
-
-
-
-
 $('#okbutt2').on("click",function(){
 	$('#modal2').css("display","none");
-		$('#alreadycomment').css("display","none")
-		$('.postcomment').remove()
+		// $('#alreadycomment').css("display","none")
+		// $('.postcomment').remove()
 		$('.commentos').remove()
 		$('.commentreactions').remove()
-		$('#replyinput').remove()
-				$('#replybutton').remove();
+		$('.comreplyinp').remove()
+		$('.comreplies').remove()
+		// $('#replyinput').remove()
+		// $('#replybutton').remove();
 	// receiveuser=senduser;
 	// senduser=usr1;
 			
